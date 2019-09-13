@@ -88,4 +88,7 @@ router.get("/user", authMiddleware.isLoggedIn, function(req, res, next) {
   });
 });
 
+// 3. At the "/name" path, display every entry in the animals collection, sorted by name
+
+
 module.exports = router;
