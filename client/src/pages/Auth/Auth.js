@@ -8,6 +8,8 @@ class Auth extends Component {
 
   state = {
     loggedIn: false,
+    firstName: "",
+    lastName: "",
     username: "",
     password: "",
     confirmPassword: "",
@@ -52,6 +54,8 @@ class Auth extends Component {
     event.preventDefault();
     if (this.state.username && this.state.password) {
       API.signup({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
         username: this.state.username,
         password: this.state.password
       }).then(user => {
@@ -86,6 +90,8 @@ class Auth extends Component {
           />
         ) : (
             <Signup
+              firstName={this.state.firstName}
+              lastName={this.state.lastName}
               username={this.state.username}
               password={this.state.password}
               confirmPassword={this.state.confirmPassword}
