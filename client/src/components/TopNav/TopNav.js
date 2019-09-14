@@ -14,6 +14,7 @@ import {
     DropdownMenu,
     DropdownItem,
 } from 'reactstrap';
+import StudentNav from "../StudentNav"
 
 export default class Navigation extends Component {
 
@@ -28,6 +29,7 @@ export default class Navigation extends Component {
 
     componentDidMount() {
         API.isLoggedIn().then(user => {
+            console.log(user)
             if (user.data.loggedIn) {
                 this.setState({
                     loggedIn: true
@@ -69,14 +71,9 @@ export default class Navigation extends Component {
                                 </DropdownToggle>
                                 <DropdownMenu right>
                                     {this.state.loggedIn ? (
-                                        <>
-                                            <DropdownItem>
-                                                <NavLink href="/profile">Profile</NavLink>
-                                            </DropdownItem>
-                                            <DropdownItem>
-                                                <NavLink onClick={this.logout}>Logout</NavLink>
-                                            </DropdownItem>
-                                        </>
+                                       <StudentNav
+                                            logout= {this.logout}
+                                       />
                                     ) : (
                                         <>
                                             <DropdownItem>

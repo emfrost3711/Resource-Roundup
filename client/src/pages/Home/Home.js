@@ -1,28 +1,18 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
 import API from "../../utils/API";
-import Joke from "../../components/Joke"
 import "./Home.scss";
 
 class Home extends Component {
 
   state = {
     loggedIn: false,
-    joke: ""
+    
   };
 
   c
 
-  getJoke = () => {
-    API.ChuckNorris().then(joke => {
-      let newJoke = joke.data.value.joke.replace(/&quot;/g, '"');
-      this.setState({
-        joke: newJoke
-      })
-    }).catch(err => {
-      console.log(err)
-    });
-  }
+ 
 
   loggedIn = () => {
     API.isLoggedIn().then(user => {
@@ -39,10 +29,7 @@ class Home extends Component {
   render() {
     return (
       <div className="homeBox">
-        <Joke joke={this.state.joke}/>
-        {this.state.loggedIn ? (
-          <Button onClick={e=> {this.getJoke()}} color="warning" block>Get New Joke</Button>
-        ) : (<></>)}
+        <h1>Testing</h1>
       </div>
     );
   }
