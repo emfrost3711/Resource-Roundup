@@ -12,6 +12,7 @@ var ResourceSchema = new Schema({
     title: {
         type: String,
         trim: true,
+        
     },
 
     // `boolean` must be of type Boolean
