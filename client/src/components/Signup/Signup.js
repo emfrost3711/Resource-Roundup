@@ -10,8 +10,6 @@ class Signup extends Component {
         validUsername: false,
         validPassword: false,
         confirmPassword: false,
-        isAdmin: false,
-        validAdmin: false,
     }
 
     componentDidUpdate() {
@@ -20,8 +18,6 @@ class Signup extends Component {
         this.validatePassword();
         this.confirmPassword();
         this.validateUsername();
-        this.handleRoleChange();
-     
     }
 
     validateFirstName() {
@@ -91,36 +87,8 @@ class Signup extends Component {
         }
     }
 
-    validateAdminPassword() {
-    
-        if (this.props.adminPassword !== '$heriff') {
-            this.setState({
-                validAdmin: false
-            });
-        } 
-        if (this.props.adminPasswork === '$heriff') {
-            this.setState({
-                validAdmin: true
-            });
-        }
-    }
 
-    handleRoleChange(role) {
-        
-        if (role === "instructor") {
-            this.setState({
-                isAdmin: true
-            });
-
-            this.validateAdminPassword();
-        };
-        if (role === "student") {
-            this.setState({
-                isAdmin: false
-            })
-        
-        };
-    }
+ 
 
     
 
@@ -157,19 +125,19 @@ class Signup extends Component {
 
                         <FormGroup check>
                             <Label check>
-                                <Input type="radio" name="radio1"  onClick={() => this.handleRoleChange("student")}/>{' '}
+                                <Input type="radio" name="radio1"  onClick={() => this.props.handleRoleChange("student")}/>{' '}
                                 Student
                             </Label>
                         </FormGroup>
                         <FormGroup check>
                             <Label check>
-                                <Input type="radio" name="radio1" onClick={() => this.handleRoleChange("instructor")} />{' '}
+                                <Input type="radio" name="radio1" onClick={() => this.props.handleRoleChange("instructor")} />{' '}
                                 Instructor
                             </Label>
                         </FormGroup>
                         
-                        {this.state.isAdmin && 
-                        <input name="adminPassword" placeholder="instructor key" value={this.props.adminPassword} onChange={this.props.handleInputChange} valid={this.state.validAdmin}></input>}
+                        {this.props.admin && 
+                        <input name="adminPassword" placeholder="instructor key" value={this.props.adminPassword} onChange={this.props.handleInputChange}></input>}
 
                         <br />
                         {/* if all fields are valid, allow the user to submit the form */}

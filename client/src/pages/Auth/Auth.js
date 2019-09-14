@@ -15,6 +15,7 @@ class Auth extends Component {
     confirmPassword: "",
     user: null,
     message: "",
+    admin: false,
     adminPassword: ""
   }
 
@@ -51,15 +52,31 @@ class Auth extends Component {
     }
   }
 
+  handleRoleChange = (role) => {
+        
+    if (role === "instructor") {
+        this.setState({
+            admin: true
+        });
+
+    };
+    if (role === "student") {
+        this.setState({
+            admin: false
+        })
+    
+    };
+}
+
   handleSignup = event => {
     event.preventDefault();
-    if (this.state.username && this.state.password) {
+    if (this.state.username && this.state.password && !this.state.admin) {
       API.signup({
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         username: this.state.username,
         password: this.state.password,
-        adminPassword: this.state.adminPassword
+        admin: this.state.admin
       }).then(user => {
         if (user.data.loggedIn) {
           this.setState({
@@ -76,6 +93,35 @@ class Auth extends Component {
           })
         }
       });
+    }
+    else if (this.state.admin && this.state.adminPassword === '$heriff') {
+      API.signup({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        username: this.state.username,
+        password: this.state.password,
+        admin: this.state.admin
+      }).then(user => {
+        if (user.data.loggedIn) {
+          this.setState({
+            loggedIn: true,
+            user: user.data.user
+          });
+          console.log("log in successful");
+          window.location.href = '/profile';
+        } else {
+          console.log("something went wrong :(")
+          console.log(user.data);
+          this.setState({
+            message: user.data
+          })
+        }
+      })
+    }
+    else {
+      this.setState({
+        message: "Fill out a valid form"
+      })
     }
   }
 
@@ -100,6 +146,8 @@ class Auth extends Component {
               handleSignup={this.handleSignup}
               handleInputChange={this.handleInputChange}
               message={this.state.message}
+              admin={this.state.admin}
+              handleRoleChange={this.handleRoleChange}
               adminPassword={this.state.adminPassword}
             />
           )}
