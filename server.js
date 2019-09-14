@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/react-auth-simple", { useNewUrlParser: true }, function(err) {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/roundup", { useNewUrlParser: true }, function(err) {
     if (err) throw err;
     console.log(`mongoose connection successful`.yellow);
     app.listen(PORT, (err)=> {
@@ -39,5 +39,14 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/react-auth-simp
     });
 });
 
+// /////////////////////copied from react 20 activity 9 server.js
 
+
+// Connect to the Mongo DB
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+
+// // Start the API server
+// app.listen(PORT, function() {
+//   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+// });
 
