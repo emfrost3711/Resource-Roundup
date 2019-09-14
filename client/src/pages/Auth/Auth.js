@@ -14,7 +14,8 @@ class Auth extends Component {
     password: "",
     confirmPassword: "",
     user: null,
-    message: ""
+    message: "",
+    adminPassword: ""
   }
 
   handleInputChange = event => {
@@ -57,7 +58,8 @@ class Auth extends Component {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
         username: this.state.username,
-        password: this.state.password
+        password: this.state.password,
+        adminPassword: this.state.adminPassword
       }).then(user => {
         if (user.data.loggedIn) {
           this.setState({
@@ -98,6 +100,7 @@ class Auth extends Component {
               handleSignup={this.handleSignup}
               handleInputChange={this.handleInputChange}
               message={this.state.message}
+              adminPassword={this.state.adminPassword}
             />
           )}
       </div>

@@ -5,7 +5,7 @@ import Profile from "./pages/Profile";
 import Auth from "./pages/Auth";
 import NoMatch from "./pages/NoMatch";
 import TopNav from "./components/TopNav";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import { Container } from 'reactstrap';
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
               <Route component={NoMatch} />
             </Switch>
           </Container>
-          <Footer />
+          {/* <Footer /> */}
         </>
       </Router>
   );
