@@ -44,7 +44,7 @@ class Auth extends Component {
           console.log("log in successful");
           window.location.href = '/student/dashboard';
         }
-        else if (user.data.loggedIn && this.state.admin) {
+        else if (user.data.loggedIn && this.state.admin && this.state.adminPassword === '$heriff') {
           this.setState({
             loggedIn: true,
             user: user.data.user
