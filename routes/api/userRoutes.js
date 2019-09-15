@@ -59,7 +59,7 @@ router.get("/unauthorized", function(req, res, next) {
 
 // /api/users/profile
 // if the user is logged in, this route sends the user information to the front end
-router.get("/profile", authMiddleware.isLoggedIn, function(req, res, next) {
+router.get("/student/dashboard", authMiddleware.isLoggedIn, function(req, res, next) {
   res.json({
     user: req.user,
     loggedIn: true
@@ -74,7 +74,7 @@ router.get("/logout", authMiddleware.logoutUser, function(req, res, next) {
 
 // /api/users/admin
 // route to check if the logged in user is flagged as an administer
-router.get("/admin", authMiddleware.isAdmin, function(req, res, next) {
+router.get("/admin/dashboard", authMiddleware.isAdmin, function(req, res, next) {
   res.json({
     user: req.user,
     loggedIn: true

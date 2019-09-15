@@ -29,27 +29,37 @@ class Auth extends Component {
 
   handleLogin = event => {
     event.preventDefault();
-    if (this.state.username && this.state.password) {
+    if (this.state.username && this.state.password ) {
       API.login({
         username: this.state.username,
-        password: this.state.password
+        password: this.state.password,
+        admin: this.state.admin
       }).then(user => {
         console.log(user);
-        if (user.data.loggedIn) {
+        if (user.data.loggedIn && !this.state.admin) {
           this.setState({
             loggedIn: true,
             user: user.data.user
           });
           console.log("log in successful");
-          window.location.href = '/profile';
+          window.location.href = '/student/dashboard';
         }
-        else if (user.data.message) {
+        else if (user.data.loggedIn && this.state.admin) {
+          this.setState({
+            loggedIn: true,
+            user: user.data.user
+          });
+          console.log("log in successful");
+          window.location.href = '/admin/dashboard';
+        }
+        else {
           this.setState({
             message: user.data.message
           })
         }
       });
     }
+    
   }
 
   handleRoleChange = (role) => {
@@ -84,7 +94,7 @@ class Auth extends Component {
             user: user.data.user
           });
           console.log("log in successful");
-          window.location.href = '/profile';
+          window.location.href = '/student/dashboard';
         } else {
           console.log("something went wrong :(")
           console.log(user.data);
@@ -108,7 +118,7 @@ class Auth extends Component {
             user: user.data.user
           });
           console.log("log in successful");
-          window.location.href = '/profile';
+          window.location.href = '/admin/dashboard';
         } else {
           console.log("something went wrong :(")
           console.log(user.data);
@@ -132,9 +142,12 @@ class Auth extends Component {
           <Login
             username={this.state.username}
             password={this.state.password}
+            admin={this.state.admin}
             handleLogin={this.handleLogin}
             handleInputChange={this.handleInputChange}
             message={this.state.message}
+            adminPassword={this.state.adminPassword}
+            handleRoleChange={this.handleRoleChange}
           />
         ) : (
             <Signup
