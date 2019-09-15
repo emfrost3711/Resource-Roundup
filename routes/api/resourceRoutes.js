@@ -15,19 +15,3 @@ router.get("/resources", function (req, res) {
 
 module.exports = router;
 
-// // /api/todos/new
-// // add new todo, update the user to have todo id
-// router.post("/new", authMiddleware.isLoggedIn, function (req, res, next) {
-//     const newTodo = new db.Todo({
-//         author: req.user._id,
-//         todo: req.body.todo
-//     });
-
-//     newTodo.save((err, newTodo) => {
-//         if (err) throw err;
-//         db.User.findByIdAndUpdate(req.user.id, { $push: { todos: newTodo._id } }, (err, user) => {
-//             if (err) throw err;
-//             res.send(newTodo, user);
-//         });
-//     });
-// });
