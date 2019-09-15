@@ -50,6 +50,14 @@ db.Resource.create({ title: "sample resource" })
     console.log(err.message);
   });
 
+  db.Tag_List.create({ title: "sample tag" })
+  .then(function(dbTag_List) {
+    console.log(dbTag_List);
+  })
+  .catch(function(err) {
+    console.log(err.message);
+  });
+
   app.get("/resources", function(req, res) {
     // Find all users
     db.Resource.find({})
