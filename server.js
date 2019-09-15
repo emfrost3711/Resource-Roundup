@@ -9,6 +9,9 @@ const passport = require("passport");
 const logger = require("morgan");
 const flash = require('connect-flash');
 
+// Require all models
+const db = require("./models");
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
@@ -39,14 +42,35 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/roundup", { use
     });
 });
 
-// /////////////////////copied from react 20 activity 9 server.js
+db.Resource.create({ title: "sample resource" })
+  .then(function(dbResource) {
+    console.log(dbResource);
+  })
+  .catch(function(err) {
+    console.log(err.message);
+  });
 
+  db.Tag_List.create({ title: "sample tag" })
+  .then(function(dbTag_List) {
+    console.log(dbTag_List);
+  })
+  .catch(function(err) {
+    console.log(err.message);
+  });
 
-// Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
+  app.get("/resources", function(req, res) {
+    // Find all users
+    db.Resource.find({})
+      // Specify that we want to populate the retrieved users with any associated notes
+      .populate("title")
+      .then(function(dbResource) {
+        // If able to successfully find and associate all Users and Notes, send them back to the client
+        res.json(dbResource);
+      })
+      .catch(function(err) {
+        // If an error occurs, send it back to the client
+        res.json(err);
+      });
+  });
 
-// // Start the API server
-// app.listen(PORT, function() {
-//   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-// });
 

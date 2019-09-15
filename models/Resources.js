@@ -7,25 +7,29 @@ var Schema = mongoose.Schema;
 // Using the Schema constructor, create a new ResourceSchema object
 // This is similar to a Sequelize model
 
-const ResourceSchema = new Schema({
-    author: {
-      type: Schema.Types.ObjectId,
-      ref: "User"
-    },
-    todo: {
+const resourceSchema = new Schema({
+    title: {
       type: String,
-      unique: false,
-      required: [true, "text is required"]
+      required: "title is required"
     },
+    // approved: {
+    //   type: Boolean,
+    //   default: false
+    // },
     // createdAt: {
     //   type: Date,
     //   default: Date.now()
     // }
+    tags: [{
+      type: Schema.Types.ObjectId,
+      ref:"Tag_List"
+
+    }]
   });
 
 
 // This creates our model from the above schema, using mongoose's model method
-var Resource = mongoose.model("Resource", ResourceSchema);
+var Resource = mongoose.model("Resource", resourceSchema);
 
 // Export the Example model
 module.exports = Resource;
