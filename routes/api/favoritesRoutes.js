@@ -6,6 +6,17 @@ const passport = require("../../config/passport");
 const db = require("../../models");
 const authMiddleware = require("../../config/middleware/authMiddleware");
 
+
+router.get("/favorites", function (req, res) {
+    console.log('I am the favorites route', req, res);
+    db.Favorite.find({ }, (err, favorites) => {
+        res.json(favorites);
+    });
+});
+
+module.exports = router;
+
+
 // // /api/todos/all
 // // get all todos from the signed in user
 // router.get("/all", authMiddleware.isLoggedIn, function (req, res, next) {
