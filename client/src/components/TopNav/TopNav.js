@@ -38,6 +38,17 @@ export default class Navigation extends Component {
         }).catch(err => {
             console.log(err);
         });
+
+        API.isStudentLoggedIn().then(user => {
+            console.log(user)
+            if (user.data.loggedIn) {
+                this.setState({
+                    loggedIn: true
+                });
+            }
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     logout() {

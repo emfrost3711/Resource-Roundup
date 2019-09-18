@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import "./AdminDash.css";
+import "./AdminDash.scss";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom"
 import API from "../../utils/API"

@@ -15,7 +15,7 @@ class StudentDash extends Component {
 
         this.loading();
 
-        API.isLoggedIn().then(user => {
+        API.isStudentLoggedIn().then(user => {
             if (user.data.loggedIn) {
                 this.setState({
                     loggedIn: true,
