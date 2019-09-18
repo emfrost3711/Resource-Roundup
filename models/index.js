@@ -2,6 +2,6 @@ module.exports = {
     User: require("./Users"),
     Todo: require("./Todos"),
     Resource: require("./Resources"),
-    Tag_List: require("./Tag_List"),
-    Favorite: require("./Favorites")
+    Tags: require("./Tags"),
+    // Favorite: require("./Favorites")
   };

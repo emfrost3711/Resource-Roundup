@@ -50,13 +50,35 @@ db.Resource.create({ title: "sample resource" })
     console.log(err.message);
   });
 
-  db.Tag_List.create({ title: "sample tag" })
+  db.Tags.create({ title: "sample tag" })
   .then(function(dbTag_List) {
     console.log(dbTag_List);
   })
   .catch(function(err) {
     console.log(err.message);
   });
+
+  //test route for creating a favorite
+  // db.Favorite.create({ title: "sample favorite" })
+  //   .then(function(dbFavorite) {
+  //     console.log(dbFavorite);
+  //   }).catch(function(err) {
+  //     console.log(err.message);
+  //   });
+
+//test route for adding to the favorites array
+app.post("/favorites", function (req, res) {
+    //create a new favorites in the database
+    console.log(req.user.id)
+//when we get the front end wired up the fronte nd should send and object containg a favorite id key value pair to steal and put int eh favorites array (the mongo ID for the favoriet thing we want to save
+    db.User.findOneAndUpdate({ _id: req.user.id}, {$push: {favorites: req.body.resourceID}}, {new: true})
+    .then(function(dbUser) {
+      res.json(dbUser);
+    })
+    .catch(function(err) {
+      res.json (err)
+    })
+})
 
   app.get("/resources", function(req, res) {
     // Find all users
