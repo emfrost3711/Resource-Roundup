@@ -12,6 +12,35 @@ const resourceSchema = new Schema({
       type: String,
       required: "title is required"
     },
+    link: {
+      type: String,
+    },
+    image: {
+      type: String,
+    },
+    contributor: {
+      type: String
+    },
+    author: {
+      type: String
+    },
+    source_s3: {
+      type: String
+    },
+    likes: {
+      type: Number
+    },
+    dislikes: {
+      type: Number
+    },
+    category: [{
+      type: Schema.Types.ObjectId,
+      ref: "Category_List"
+    }],
+    tags: [{
+      type: Schema.Types.ObjectId,
+      ref:"Tag_List"
+    }]
     // approved: {
     //   type: Boolean,
     //   default: false
@@ -20,11 +49,7 @@ const resourceSchema = new Schema({
     //   type: Date,
     //   default: Date.now()
     // }
-    tags: [{
-      type: Schema.Types.ObjectId,
-      ref:"Tag_List"
 
-    }]
   });
 
 
