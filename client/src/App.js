@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
@@ -10,7 +10,9 @@ import StudentDash from "./pages/StudentDash";
 // import Footer from "./components/Footer";
 import { Container } from 'reactstrap';
 
-function App() {
+class App extends Component {
+ 
+  render () {
   return (
       <Router>
         <>
@@ -31,6 +33,7 @@ function App() {
         </>
       </Router>
   );
+}
 }
 
 export default App;
