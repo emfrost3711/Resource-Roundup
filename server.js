@@ -26,6 +26,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get("/test", function(req, res) {
+  db.Resource.find()
+  .populate("tags category")
+  .then(resource => res.json(resource))
+  .catch(err => res.json(err))
+})
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
@@ -50,9 +56,14 @@ db.Resource.create({ title: "sample resource" })
     console.log(err.message);
   });
 
-  db.Tag_List.create({ title: "sample tag" })
+  db.Tag_List.create({ tag: "sample tag" })
   .then(function(dbTag_List) {
     console.log(dbTag_List);
+  })
+
+  db.Category_List.create({ category: "sample category" })
+  .then(function(dbCategory_List) {
+    console.log(dbCategory_List);
   })
   .catch(function(err) {
     console.log(err.message);
@@ -73,4 +84,9 @@ db.Resource.create({ title: "sample resource" })
       });
   });
 
+app.post("/resources", function(req, res) {
+  db.Resource.create(req.body)
+  .then(dbResource => res.json(dbResource))
+  .catch(err => res.json(err))
+})
 

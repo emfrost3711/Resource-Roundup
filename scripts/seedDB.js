@@ -5,28 +5,21 @@ const db = require("../models");
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/resourceroundup"
+  "mongodb://localhost/roundup"
 );
 
-const resourceSeed = [
+const testSeed = [
   {
-    title: "Placeholder.com",
-    address: "https://placeholder.com/",
-    tags: "html",
-    date: new Date(Date.now())
-  },
-  {
-    title: "Lord of the Flies",
-    address: "William Golding",
-    tags: "",
-    date: new Date(Date.now())
+    title: "test title",
+    tags: ["5d819bafe7b57f7eaac28a07"],
+    category: ["5d819bafe7b57f7eaac28a08"]
   },
   
 ];
 
 db.Resource
   .remove({})
-  .then(() => db.Resource.collection.insertMany(resourceSeed))
+  .then(() => db.Resource.collection.insertMany(testSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
