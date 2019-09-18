@@ -14,8 +14,8 @@ import {
     DropdownMenu,
     DropdownItem,
 } from 'reactstrap';
-import StudentNav from "../StudentNav"
-import AdminNav from "../AdminNav";
+import StudentNav from "../student/StudentNav"
+import AdminNav from "../admin/AdminNav";
 
 export default class Navigation extends Component {
 

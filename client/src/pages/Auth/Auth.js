@@ -33,10 +33,9 @@ class Auth extends Component {
       API.login({
         username: this.state.username,
         password: this.state.password,
-        admin: this.state.admin
       }).then(user => {
         console.log(user);
-        if (user.data.loggedIn && !this.state.admin) {
+        if (user.data.loggedIn && !user.data.user.admin) {
           this.setState({
             loggedIn: true,
             user: user.data.user
@@ -44,7 +43,7 @@ class Auth extends Component {
           console.log("log in successful");
           window.location.href = '/student/dashboard';
         }
-        else if (user.data.loggedIn && this.state.admin && this.state.adminPassword === '$heriff') {
+        else if (user.data.loggedIn && user.data.user.admin) {
           this.setState({
             loggedIn: true,
             user: user.data.user
