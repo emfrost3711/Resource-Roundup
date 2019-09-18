@@ -1,40 +1,65 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
+import "./AdminDash.css";
 import { Button } from "reactstrap";
-import "./Home.scss";
+import { Link } from "react-router-dom"
+import API from "../../utils/API"
 
-class Home extends Component {
+class AdminDash extends Component {
+    state = {
+        loggedIn: false,
+        user: null,
+        loading: true
+    }
 
-  state = {
-    loggedIn: false,
-    
-  };
+    componentDidMount() {
 
-  
+        this.loading();
 
- 
-
-  loggedIn = () => {
-    API.isLoggedIn().then(user => {
-      if (user.data.loggedIn) {
-        this.setState({
-          loggedIn: true
+        API.isLoggedIn().then(user => {
+            if (user.data.loggedIn) {
+                this.setState({
+                    loggedIn: true,
+                    user: user.data.user
+                });
+            }
+        }).catch(err => {
+            console.log(err);
         });
-      }
-    }).catch(err => {
-      console.log(err);
-    });
-  }
 
-  render() {
-    return (
-      <div className="homeBox">
-        <Joke joke={this.state.joke}/>
-        {this.state.loggedIn ? (
-          <Button onClick={e=> {this.getJoke()}} color="warning" block>Get New Joke</Button>
-        ) : (<></>)}
-      </div>
-    );
-  }
+        console.log(this.props)
+    }
+
+    loading() {
+        setTimeout(()=> {
+            this.setState({
+                loading: false
+            })
+        }, 1000)  
+    }
+
+    render() {
+        return (
+            <div className="profilePage">
+                {this.state.loggedIn ? (
+                    <div className="profileBox">
+                        <h1 id="userTitle">Welcome {this.state.user.username}</h1>
+                    </div>
+                ) : (
+                    <div className="noUser">
+                        {!this.state.loading ? (
+                            <>
+                                <h1>please log in</h1>
+                                <Link className="loginLink" to="/login"><Button className="loginBtn" color="info" block>Login</Button></Link>
+                            </>
+                        ) : (
+                            <img id="loadingIcon" src="./assets/images/loading.gif" alt="loading"/>
+                        )}
+                    </div> 
+                )}
+            </div>
+        )
+    }
 }
 
-export default Home;
+
+export default AdminDash;
