@@ -29,7 +29,8 @@ class Home extends Component {
   render() {
     return (
       <div className="homeBox">
-        <h1>Testing</h1>
+        <h1>Resource Roundup Homepage</h1>
+        <h3>"A Woman's Port Is Her Own..."</h3>
       </div>
     );
   }

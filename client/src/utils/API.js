@@ -13,7 +13,11 @@ export default {
 
   // checks to see if user is logged in, then returns the user
   isLoggedIn: function() {
-    return axios.get("/api/users/profile");
+    return axios.get("/api/users/admin/dashboard");
+  },
+
+  isStudentLoggedIn: function() {
+    return axios.get("/api/users/student/dashboard");
   },
 
   // checks to see if the user is logged in and and admin, then returns the user
