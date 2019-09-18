@@ -15,6 +15,7 @@ import {
     DropdownItem,
 } from 'reactstrap';
 import StudentNav from "../StudentNav"
+import AdminNav from "../AdminNav";
 
 export default class Navigation extends Component {
 
@@ -23,7 +24,8 @@ export default class Navigation extends Component {
         this.toggle = this.toggle.bind(this);
         this.state = {
             isOpen: false,
-            loggedIn: false
+            loggedIn: false,
+            admin: false
         };
     }
 
@@ -32,7 +34,8 @@ export default class Navigation extends Component {
             console.log(user)
             if (user.data.loggedIn) {
                 this.setState({
-                    loggedIn: true
+                    loggedIn: true,
+                    admin: true
                 });
             }
         }).catch(err => {
@@ -81,11 +84,15 @@ export default class Navigation extends Component {
                                     <i className="fas fa-user light-text"></i>
                                 </DropdownToggle>
                                 <DropdownMenu right>
-                                    {this.state.loggedIn ? (
-                                       <StudentNav
+                                    {this.state.loggedIn && this.state.admin ? (
+                                       <AdminNav
                                             logout= {this.logout}
                                        />
-                                    ) : (
+                                    ) : this.state.loggedIn && !this.state.admin ? 
+                                        <StudentNav
+                                            logout= {this.logout}
+                                            />
+                                    : (
                                         <>
                                             <DropdownItem>
                                                 <NavLink href="/login">login</NavLink>
