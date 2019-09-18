@@ -1,6 +1,5 @@
 // Require mongoose
 const mongoose = require("mongoose");
-
 // Get a reference to the mongoose Schema constructor
 const Schema = mongoose.Schema;
 
@@ -19,6 +18,7 @@ const FavoritesSchema = new Schema({
     private: {
         type: Boolean,
         required: false
+        //do we want to add a 'default: true' here?
     }
 });
 
