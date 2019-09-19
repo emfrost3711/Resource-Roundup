@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import "./AdminDash.scss";
 import { Button } from "reactstrap";
-import { Link } from "react-router-dom"
-import API from "../../utils/API"
+import { Link } from "react-router-dom";
+import API from "../../utils/API";
+import TodoList from "../../components/todos/ToDoList";
 
 class AdminDash extends Component {
     state = {
@@ -43,6 +44,9 @@ class AdminDash extends Component {
                 {this.state.loggedIn ? (
                     <div className="profileBox">
                         <h1 id="userTitle">Welcome {this.state.user.username}</h1>
+                        <TodoList 
+                            user= {this.state.user}
+                        />
                     </div>
                 ) : (
                     <div className="noUser">
@@ -56,7 +60,9 @@ class AdminDash extends Component {
                         )}
                     </div> 
                 )}
+            
             </div>
+            
         )
     }
 }

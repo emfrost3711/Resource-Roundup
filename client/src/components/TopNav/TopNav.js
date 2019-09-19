@@ -14,8 +14,8 @@ import {
     DropdownMenu,
     DropdownItem,
 } from 'reactstrap';
-import StudentNav from "../StudentNav"
-import AdminNav from "../AdminNav";
+import StudentNav from "../student/StudentNav"
+import AdminNav from "../admin/AdminNav";
 
 export default class Navigation extends Component {
 
@@ -72,7 +72,7 @@ export default class Navigation extends Component {
         return (
             <div>
                 <Navbar className="navbar" light expand="md">
-                    <NavbarBrand href="/" className="titleFont"><i className="fas fa-key"></i> React Auth</NavbarBrand>
+                    <NavbarBrand href="/" className="titleFont">Resource Roundup</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>

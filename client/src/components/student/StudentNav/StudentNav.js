@@ -14,7 +14,7 @@ const StudentNav = (props) =>
     <NavLink onClick={props.logout}>Logout</NavLink>
 </DropdownItem>
 <DropdownItem>
-    <NavLink href="/resources">Resources</NavLink>
+    <NavLink href="/student/resources" >Resources</NavLink>
 </DropdownItem>
 </>)
 }

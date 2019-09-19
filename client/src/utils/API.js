@@ -34,10 +34,22 @@ export default {
     return axios.get("/api/resources");
   },
 
-  // api that gets a random Chuck Norris Joke
-  ChuckNorris: function() {
-    return axios.get("https://api.icndb.com/jokes/random");
+  getTodos: function() {
+    return axios.get("/api/todos/all")
+  },
+
+  createTodo: function() {
+    return axios.post("/api/todos/new")
+  },
+
+  removeTodo: function() {
+    return axios.delete("/api/todos/remove")
+  },
+
+  updateTodo: function() {
+    return axios.put("/api/todos/update")
   }
+
 
 };
 
