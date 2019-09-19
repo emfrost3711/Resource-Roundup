@@ -1,8 +1,10 @@
 import React, {Component} from "react";
 import "./StudentDash.css";
 import { Button } from "reactstrap";
-import { Link } from "react-router-dom"
-import API from "../../utils/API"
+import { Link } from "react-router-dom";
+import API from "../../utils/API";
+import TabsCard from "../../components/ScheduleCard";
+import Favorites from "../../components/Favorites";
 
 class StudentDash extends Component {
     state = {
@@ -39,10 +41,16 @@ class StudentDash extends Component {
 
     render() {
         return (
-            <div className="profilePage">
+            <div className="studentDashboardPage">
                 {this.state.loggedIn ? (
-                    <div className="profileBox">
-                        <h1 id="userTitle">Welcome {this.state.user.username}</h1>
+                    <div className="studentDashboardBox">
+                        <br />
+                        <h1 id="userTitle">Howdy, {this.state.user.username} !</h1>
+                        <br />
+                        <Favorites />
+                        <br />
+                        <br />
+                        <TabsCard />
                     </div>
                 ) : (
                     <div className="noUser">

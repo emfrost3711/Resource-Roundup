@@ -3,7 +3,7 @@ import "./AdminDash.scss";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
-import TodoList from "../../components/todos/ToDoList";
+import TabsCard from "../../components/ScheduleCard";
 
 class AdminDash extends Component {
     state = {
@@ -44,9 +44,7 @@ class AdminDash extends Component {
                 {this.state.loggedIn ? (
                     <div className="profileBox">
                         <h1 id="userTitle">Welcome {this.state.user.username}</h1>
-                        <TodoList 
-                            user= {this.state.user}
-                        />
+                        <TabsCard />
                     </div>
                 ) : (
                     <div className="noUser">
