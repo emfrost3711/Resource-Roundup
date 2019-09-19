@@ -8,7 +8,7 @@ import TopNav from "./components/TopNav";
 import AdminDash from "./pages/AdminDash";
 import StudentDash from "./pages/StudentDash";
 // import Footer from "./components/Footer";
-import { Container } from 'reactstrap';
+import StudentResources from "./pages/StudentResources";
 
 class App extends Component {
  
@@ -17,7 +17,7 @@ class App extends Component {
       <Router>
         <>
           <TopNav />
-          <Container>
+         
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/signup" render={(props) => <Auth {...props} action="signup" />} />
@@ -25,10 +25,11 @@ class App extends Component {
               <Route exact path="/admin/dashboard" component={AdminDash} />
               <Route exact path="/student/dashboard" component={StudentDash} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/student/resources" component={StudentResources} />
 
               <Route component={NoMatch} />
             </Switch>
-          </Container>
+         
           {/* <Footer /> */}
         </>
       </Router>
