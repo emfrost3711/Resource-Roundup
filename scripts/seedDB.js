@@ -26,6 +26,12 @@ const testComment = [
 
 ]
 
+// const testFavorite = [
+//   {
+
+//   }
+// ]
+
 db.Resource
   .remove({})
   .then(() => db.Resource.collection.insertMany(testSeed))
