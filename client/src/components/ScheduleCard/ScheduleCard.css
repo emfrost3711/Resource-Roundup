@@ -1,0 +1,19 @@
+.events {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .events .ant-badge-status {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 30%;
+    text-overflow: ellipsis;
+    font-size: 4px;
+  }
+  .notes-month {
+    text-align: center;
+    font-size: 28px;
+  }
+  .notes-month section {
+    font-size: 28px;
+  }

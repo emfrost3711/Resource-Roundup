@@ -4,7 +4,7 @@ import {
     DropdownItem,
 } from 'reactstrap';
 
-const StudentNav = (props) => 
+const AdminNav = (props) => 
 
 {   return (<>
 <DropdownItem>
@@ -16,7 +16,10 @@ const StudentNav = (props) =>
 <DropdownItem>
     <NavLink href="/resources">Resources</NavLink>
 </DropdownItem>
+<DropdownItem>
+    <NavLink href="/resources">Settings</NavLink>
+</DropdownItem>
 </>)
 }
 
-export default StudentNav;
+export default AdminNav;

@@ -1,0 +1,7 @@
+
+
+.resourceCardBox {
+    position: relative;
+    float: right;
+    display: inline-flex;
+}

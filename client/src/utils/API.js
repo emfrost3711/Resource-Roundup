@@ -13,7 +13,11 @@ export default {
 
   // checks to see if user is logged in, then returns the user
   isLoggedIn: function() {
-    return axios.get("/api/users/profile");
+    return axios.get("/api/users/admin/dashboard");
+  },
+
+  isStudentLoggedIn: function() {
+    return axios.get("/api/users/student/dashboard");
   },
 
   // checks to see if the user is logged in and and admin, then returns the user
@@ -30,10 +34,22 @@ export default {
     return axios.get("/api/resources");
   },
 
-  // api that gets a random Chuck Norris Joke
-  ChuckNorris: function() {
-    return axios.get("https://api.icndb.com/jokes/random");
+  getTodos: function() {
+    return axios.get("/api/todos/all")
+  },
+
+  createTodo: function() {
+    return axios.post("/api/todos/new")
+  },
+
+  removeTodo: function() {
+    return axios.delete("/api/todos/remove")
+  },
+
+  updateTodo: function() {
+    return axios.put("/api/todos/update")
   }
+
 
 };
 
