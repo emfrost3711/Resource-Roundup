@@ -11,8 +11,9 @@ mongoose.connect(
 const testSeed = [
   {
     title: "test title",
-    tags: ["5d819bafe7b57f7eaac28a07"],
-    category: ["5d819bafe7b57f7eaac28a08"],
+    tags: ["5d8429b9fb722d44fa3ee439"],
+    category: ["5d8429b9fb722d44fa3ee43a"],
+    comment: ["5d843c6ede37a447d542a2fc"],
     source_s3: "s3://resourceroundup/computer_theory/Wk 22 Day 3 - webdev-22-3-big-o-and-data-structures.pdf"
   },  
 ];
@@ -37,18 +38,16 @@ db.Resource
   .then(() => db.Resource.collection.insertMany(testSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
-    process.exit(0);
+    // process.exit(0);
   })
   .catch(err => {
     console.error(err);
     process.exit(1);
   });
   
-  db.Comments
-  .remove({})
-  .then(() => db.Comments.collection.insertMany(testComment))
+  db.Comments.collection.insertMany(testComment)
   .then(data => {
-    console.log(data.result.n + " records inserted!");
+    console.log(data.result.n + " comments inserted!");
     process.exit(0);
   })
   .catch(err => {

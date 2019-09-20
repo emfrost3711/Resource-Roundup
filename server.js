@@ -49,7 +49,18 @@ app.get("/resources/:id", function(req, res) {
 
 app.use(routes);
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/roundup", { useNewUrlParser: true }, function(err) {
+    if (err) throw err;
+    console.log(`mongoose connection successful`.yellow);
+    app.listen(PORT, (err)=> {
+        if (err) throw err;
+        console.log(`connected on port ${PORT}`.cyan)
+    });
+});
 
 db.Resource.create({ title: "sample resource" })
 .then(function(dbResource) {
@@ -112,12 +123,12 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/roundup", { useNewUrlParser: true }, function(err) {
-  if (err) throw err;
-  console.log(`mongoose connection successful`.yellow);
-  app.listen(PORT, (err)=> {
-    if (err) throw err;
-    console.log(`connected on port ${PORT}`.cyan)
-  });
-});
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/roundup", { useNewUrlParser: true }, function(err) {
+//   if (err) throw err;
+//   console.log(`mongoose connection successful`.yellow);
+//   app.listen(PORT, (err)=> {
+//     if (err) throw err;
+//     console.log(`connected on port ${PORT}`.cyan)
+//   });
+// });
 
