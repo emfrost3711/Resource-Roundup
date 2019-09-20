@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 const colors = require("colors");
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -31,6 +31,20 @@ app.get("/test", function(req, res) {
   .populate("tags category")
   .then(resource => res.json(resource))
   .catch(err => res.json(err))
+})
+
+app.get("/resources/:id", function(req, res) {
+  let ID = req.params.id
+  console.log(ID)
+  db.Resource.findOne({ _id: ID})
+  // .populate("comment user")
+  .then(function(dbResource) {
+    res.json(dbResource);
+  })
+  .catch(function(err) {
+    // If an error occurs, send it back to the client
+    res.json(err);
+  });
 })
 
 if (process.env.NODE_ENV === "production") {
@@ -103,4 +117,6 @@ app.post("/resources", function(req, res) {
   .then(dbResource => res.json(dbResource))
   .catch(err => res.json(err))
 })
+
+
 
