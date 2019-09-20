@@ -5,9 +5,9 @@ const db = require("../../models");
 // // get all todos from the signed in user
 router.get("/tags", function (req, res) {
     console.log('I am the tags route', req, res);
-    db.Resource.find({ }, (err, resources) => {
-        res.json(tags);
-    });
+    db.Tag_List.find()
+        .then(tags => res.json(tags))
+        .catch(err => res.json(err));
 });
 
 module.exports = router;

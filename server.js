@@ -47,11 +47,11 @@ app.get("/resources/:id", function(req, res) {
   });
 })
 
+app.use(routes);
+
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
-
-app.use(routes);
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/roundup", { useNewUrlParser: true }, function(err) {
     if (err) throw err;

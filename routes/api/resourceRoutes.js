@@ -8,9 +8,10 @@ const db = require("../../models");
 // // get all todos from the signed in user
 router.get("/resources", function (req, res) {
     console.log('I am the resources route', req, res);
-    db.Resource.find({ }, (err, resources) => {
-        res.json(resources);
-    });
+    db.Resource.find()
+        .populate("category tags comment")
+        .then(resources => res.json(resources))
+        .catch(err => res.json(err));
 });
 
 module.exports = router;
