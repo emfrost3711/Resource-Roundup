@@ -40,6 +40,10 @@ const resourceSchema = new Schema({
     tags: [{
       type: Schema.Types.ObjectId,
       ref:"Tag_List"
+    }],
+    comment: [{
+      type: Schema.Types.ObjectId,
+      ref:"Comments"
     }]
     // approved: {
     //   type: Boolean,
