@@ -63,54 +63,55 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/roundup", { use
 });
 
 db.Resource.create({ title: "sample resource" })
-  .then(function(dbResource) {
-    console.log(dbResource);
-  })
-  .catch(function(err) {
-    console.log(err.message);
-  });
-
-  db.Tag_List.create({ tag: "sample tag" })
-  .then(function(dbTag_List) {
-    console.log(dbTag_List);
-  })
-
-  db.Category_List.create({ category: "sample category" })
-  .then(function(dbCategory_List) {
-    console.log(dbCategory_List);
-  })
-  .catch(function(err) {
-    console.log(err.message);
-  });
-
-//test route for adding to the favorites array
-app.post("/favorites", function (req, res) {
-    //create a new favorites in the database
-    console.log(req.user.id)
-//when we get the front end wired up the front end should send and object containing a favorite id key value pair to steal and put in the favorites array (the mongo ID for the resource thing we want to save as a favorite)
-    db.User.findOneAndUpdate({ _id: req.user.id}, {$push: {favorites: req.body.resourceID}}, {new: true})
-    .then(function(dbUser) {
-      res.json(dbUser);
-    })
-    .catch(function(err) {
-      res.json (err)
-    })
+.then(function(dbResource) {
+  console.log(dbResource);
+})
+.catch(function(err) {
+  console.log(err.message);
 });
 
-  app.get("/resources", function(req, res) {
-    // Find all users
-    db.Resource.find({})
-      // Specify that we want to populate the retrieved users with any associated notes
-      .populate("title")
-      .then(function(dbResource) {
-        // If able to successfully find and associate all Users and Notes, send them back to the client
-        res.json(dbResource);
-      })
-      .catch(function(err) {
-        // If an error occurs, send it back to the client
-        res.json(err);
-      });
+db.Tag_List.create({ tag: "sample tag" })
+.then(function(dbTag_List) {
+  console.log(dbTag_List);
+})
+
+db.Category_List.create({ category: "sample category" })
+.then(function(dbCategory_List) {
+  console.log(dbCategory_List);
+})
+.catch(function(err) {
+  console.log(err.message);
+});
+
+//test route for adding to the favorites array
+// app.post("/favorites", function (req, res) {
+//   //create a new favorites in the database
+//   console.log(req.user.id);
+//   console.log(req.body);
+//   //when we get the front end wired up the front end should send and object containing a favorite id key value pair to steal and put in the favorites array (the mongo ID for the resource thing we want to save as a favorite)
+//   db.User.findOneAndUpdate({ _id: req.user.id}, {$push: {favorites: req.body.resourceID}}, {new: true})
+//   .then(function(dbUser) {
+//     res.json(dbUser);
+//   })
+//   .catch(function(err) {
+//     res.json (err)
+//   })
+// });
+
+app.get("/resources", function(req, res) {
+  // Find all users
+  db.Resource.find({})
+  // Specify that we want to populate the retrieved users with any associated notes
+  .populate("title")
+  .then(function(dbResource) {
+    // If able to successfully find and associate all Users and Notes, send them back to the client
+    res.json(dbResource);
+  })
+  .catch(function(err) {
+    // If an error occurs, send it back to the client
+    res.json(err);
   });
+});
 
 app.post("/resources", function(req, res) {
   db.Resource.create(req.body)
@@ -118,5 +119,16 @@ app.post("/resources", function(req, res) {
   .catch(err => res.json(err))
 })
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/roundup", { useNewUrlParser: true }, function(err) {
+//   if (err) throw err;
+//   console.log(`mongoose connection successful`.yellow);
+//   app.listen(PORT, (err)=> {
+//     if (err) throw err;
+//     console.log(`connected on port ${PORT}`.cyan)
+//   });
+// });
 
