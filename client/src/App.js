@@ -25,7 +25,7 @@ class App extends Component {
               <Route exact path="/admin/dashboard" component={AdminDash} />
               <Route exact path="/student/dashboard" component={StudentDash} />
               <Route exact path="/profile" component={Profile} />
-              <Route exact path="/student/resources" component={StudentResources} />
+              <Route exact path="/resources" component={StudentResources} />
 
               <Route component={NoMatch} />
             </Switch>

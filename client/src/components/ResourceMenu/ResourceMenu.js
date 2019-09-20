@@ -1,7 +1,8 @@
 import React, {Component} from "react"
-import { Menu, Icon } from 'antd';
+import { Menu, Icon, AutoComplete } from 'antd';
 
 const { SubMenu } = Menu;
+const dataSource = ['html','css' ,'javascript'];
 
 class ResourceSider extends Component {
   // submenu keys of first level
@@ -30,6 +31,14 @@ state = {
   render() {
     return (
       <><h2>Catagories</h2>
+         <AutoComplete
+      style={{ width: 200 }}
+      dataSource={dataSource}
+      placeholder="Find a subject"
+      filterOption={(inputValue, option) =>
+        option.props.children.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+      }
+    />
       <Menu
         mode="inline"
         openKeys={this.state.openKeys}
