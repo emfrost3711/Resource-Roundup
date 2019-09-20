@@ -9,6 +9,7 @@ import AdminDash from "./pages/AdminDash";
 import StudentDash from "./pages/StudentDash";
 // import Footer from "./components/Footer";
 import StudentResources from "./pages/StudentResources";
+import Settings from "./components/Settings";
 
 class App extends Component {
  
@@ -24,8 +25,9 @@ class App extends Component {
               <Route exact path="/login" render={(props) => <Auth {...props} action="login" />} />
               <Route exact path="/admin/dashboard" component={AdminDash} />
               <Route exact path="/student/dashboard" component={StudentDash} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/student/resources" component={StudentResources} />
+              <Route exact path="/settings" component={Settings} />
+              <Route exact path="/resources" component={StudentResources} />
+
 
               <Route component={NoMatch} />
             </Switch>

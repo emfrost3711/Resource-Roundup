@@ -11,10 +11,10 @@ const StudentNav = (props) =>
     <NavLink href="/student/dashboard" >Dashboard</NavLink>
 </DropdownItem>
 <DropdownItem>
-    <NavLink href="/student/resources" >Resources</NavLink>
+    <NavLink href="/resources" >Resources</NavLink>
 </DropdownItem>
 <DropdownItem>
-    <NavLink href="/profile">Settings</NavLink>
+    <NavLink href="/settings">Settings</NavLink>
 </DropdownItem>
 <DropdownItem>
     <NavLink onClick={props.logout}>Logout</NavLink>
