@@ -8,7 +8,7 @@ const AdminNav = (props) =>
 
 {   return (<>
 <DropdownItem>
-    <NavLink href="/profile">Profile</NavLink>
+    <NavLink href="/admin/dashboard">Dashboard</NavLink>
 </DropdownItem>
 <DropdownItem>
     <NavLink onClick={props.logout}>Logout</NavLink>
