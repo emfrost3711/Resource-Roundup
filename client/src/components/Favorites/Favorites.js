@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { Card } from 'antd';
+import { userInfo } from "os";
 
 class Favorites extends Component {
 

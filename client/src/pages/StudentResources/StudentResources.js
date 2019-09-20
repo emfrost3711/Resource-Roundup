@@ -5,6 +5,7 @@ import ResourceSider from "../../components/ResourceMenu";
 import "./StudentResources.css";
 import ResourceCard from "../../components/ResourceCard";
 import { Layout } from 'antd';
+import CommentModal from "../../components/Modal";
 
 const { Sider, Content } = Layout;
 
@@ -42,8 +43,9 @@ class StudentResources extends Component {
             <ResourceSider
             />
         </Sider>
-        <Content style={{ height: '100vh'}}><ResourceCard/></Content>
+        <Content style={{ height: '100vh'}}><ResourceCard></ResourceCard></Content>
         </Layout>
+        <CommentModal/>
             </>
             
         )

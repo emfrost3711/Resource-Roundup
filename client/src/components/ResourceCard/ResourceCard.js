@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import API from "../../utils/API";
-import { Skeleton, Card, Icon, Avatar, Tooltip, Collapse } from 'antd';
+import { Skeleton, Card, Icon, Avatar, Tooltip, Modal, Button } from 'antd';
+import CommentForm from "../CommentForm";
 
 const { Meta } = Card;
-const { Panel } = Collapse;
+
 
 class ResourceCard extends Component {
 
@@ -12,12 +13,19 @@ class ResourceCard extends Component {
         likes: 0,
     dislikes: 0,
     action: null,
+    visible: false
+  
       };
     
     componentDidMount() {
         this.loading()
     }
     
+    showModal = () => {
+      this.setState({
+        visible: true,
+      });
+    };
 
     loading() {
         setTimeout(()=> {
@@ -47,17 +55,52 @@ class ResourceCard extends Component {
       console.log(key);
     }
 
-    loadComments = () => {
-// add function to get all comments for this resource
-    }
+    handleOk = e => {
+      console.log(e);
+      this.setState({
+        visible: false,
+      });
+    };
+  
+    handleCancel = e => {
+      console.log(e);
+      this.setState({
+        visible: false,
+      });
+    };
 
       render() {
         const { loading, likes, dislikes, action } = this.state;
 
-        const actions = [
         
-          <span key="comment-basic-like">
-            <Tooltip title="Like">
+    
+        return (
+          <>
+          
+          <div>
+        
+        <Modal
+          title="Basic Modal"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        >
+          <CommentForm/>
+        </Modal>
+      </div>
+       
+      
+    <Card
+    style={{ width: 300 }} 
+    cover={
+      <img
+        alt="example"
+        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+      />
+    }
+    actions={[
+      <span key="comment-basic-like">
+             <Tooltip title="Like">
               <Icon
                 type="like"
                 theme={action === 'liked' ? 'filled' : 'outlined'}
@@ -76,66 +119,20 @@ class ResourceCard extends Component {
             </Tooltip>
             {" "}
             <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
-        </span>
-          
-          
-        
-        ];
+        </span>,
+      <Icon type="message" key="message" onClick={this.showModal}/>,
+      <Icon type="heart" key="heart" onClick={this.addToFavorites} />,
+    ]}
     
-        return (
-          <>
-            <Card
-              style={{ width: 300, marginTop: 16 }}
-              actions={actions}
-            >
-              <Skeleton loading={loading} avatar active>
-                <Meta
-                  avatar={
-                    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                  }
-                  title="Card title"
-                  description="This is the description"
-                  
-                />
-              </Skeleton>
-            </Card>
-            
-  
-            
-            
-    <Card
-    style={{ width: 300 }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-    actions={actions}
   >
     <Meta
       avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
       title="Card title"
       description="This is the description"
     />
-    <Collapse onChange={this.callback}>
-    <Panel header={ <span key="resource-comments">
-          <Tooltip title="Comments">
-          <Icon
-            type="message"
-            onClick={this.loadComments}
-          />
-          </Tooltip>
-          </span>} key="1">
-      <Collapse defaultActiveKey="1">
-        <Panel  key="1">
-          <p>text</p>
-        </Panel>
-      </Collapse>
-    </Panel>
-    </Collapse>
+    
   </Card>
-  </ >        
+</>
         );
       }
     }
