@@ -4,13 +4,13 @@
 const router = require("express").Router();
 const db = require("../../models");
 
-db.Resource.create({ title: "sample resource" })
-.then(function(dbResource) {
-  console.log(dbResource);
-})
-.catch(function(err) {
-  console.log(err.message);
-});
+// db.Resource.create({ title: "sample resource" })
+// .then(function(dbResource) {
+//   console.log(dbResource);
+// })
+// .catch(function(err) {
+//   console.log(err.message);
+// });
 
 // // /api/todos/all
 // // get all todos from the signed in user
