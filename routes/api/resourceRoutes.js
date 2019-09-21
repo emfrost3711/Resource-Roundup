@@ -21,7 +21,7 @@ router.get("/", function (req, res) {
         .catch(err => res.json(err));
 });
 
-router.get("/resources/:id", function(req, res) {
+router.get("/:id", function(req, res) {
     let ID = req.params.id
     console.log(ID)
     db.Resource.findOne({ _id: ID})
@@ -35,20 +35,20 @@ router.get("/resources/:id", function(req, res) {
     });
   })
 
-router.get("/", function(req, res) {
-    // Find all users
-    db.Resource.find({})
-    // Specify that we want to populate the retrieved users with any associated notes
-    .populate("title")
-    .then(function(dbResource) {
-      // If able to successfully find and associate all Users and Notes, send them back to the client
-      res.json(dbResource);
-    })
-    .catch(function(err) {
-      // If an error occurs, send it back to the client
-      res.json(err);
-    });
-  });
+// router.get("/", function(req, res) {
+//     // Find all users
+//     db.Resource.find({})
+//     // Specify that we want to populate the retrieved users with any associated notes
+//     .populate("title")
+//     .then(function(dbResource) {
+//       // If able to successfully find and associate all Users and Notes, send them back to the client
+//       res.json(dbResource);
+//     })
+//     .catch(function(err) {
+//       // If an error occurs, send it back to the client
+//       res.json(err);
+//     });
+//   });
   
   router.post("/", function(req, res) {
     db.Resource.create(req.body)

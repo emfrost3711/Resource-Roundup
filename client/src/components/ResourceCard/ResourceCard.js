@@ -2,19 +2,14 @@ import React, {Component} from "react";
 import API from "../../utils/API";
 import { Skeleton, Card, Icon, Avatar, Tooltip, Modal, Button } from 'antd';
 import CommentForm from "../CommentForm";
-
 const { Meta } = Card;
-
-
 class ResourceCard extends Component {
-
     state = {
         loading: true,
         likes: 0,
-    dislikes: 0,
-    action: null,
-    visible: false,
-    type: ""
+        dislikes: 0,
+        action: null,
+        visible: false,
   
       };
     
@@ -29,7 +24,6 @@ class ResourceCard extends Component {
         visible: true,
       });
     };
-
     loading() {
         setTimeout(()=> {
             this.setState({
@@ -37,7 +31,6 @@ class ResourceCard extends Component {
             })
         }, 1000)  
     }
-
     like = () => {
       this.setState({
         likes: 1,
@@ -53,11 +46,9 @@ class ResourceCard extends Component {
         action: 'disliked',
       });
     };
-
    callback = (key) => {
       console.log(key);
     }
-
     handleOk = e => {
       console.log(e);
       this.setState({
@@ -71,10 +62,8 @@ class ResourceCard extends Component {
         visible: false,
       });
     };
-
       render() {
         const { loading, likes, dislikes, action } = this.state;
-
         
     
         return (
@@ -92,7 +81,7 @@ class ResourceCard extends Component {
         </Modal>
       </div>
        
-       {this.state.type === "pdf" ? (
+       {this.props.fileType === "pdf" ? (
        
        <Card
           style={{ width: 300, marginTop: 16 }}
@@ -128,17 +117,15 @@ class ResourceCard extends Component {
               avatar={
                 <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
               }
-              title="Card title"
+              title={this.props.title}
               description="This is the description"
             />
           </Skeleton>
         </Card>)
-
-        : this.state.type === "video" ? (<Card
+        : this.props.fileType === "video" ? (<Card
           style={{ width: 300 }} 
           cover={
-            <iframe src="https:///codingbootcamp.hosted.panopto.com/
-Panopto/Pages/Embed.aspx?id=8dae9a0b-1cbc-48d8-88f0-aa2d00085a60"
+            <iframe src={this.props.image}
 style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
           }
           actions={[
@@ -170,18 +157,18 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
         >
           <Meta
             avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-            title="Card title"
+            title={this.props.title}
             description="This is the description"
           />
           
         </Card>)
-
         :  (<Card
           style={{ width: 300 }} 
           cover={
             <img
               alt="example"
-              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+              src={this.props.image}
+              
             />
           }
           actions={[
@@ -213,7 +200,7 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
         >
           <Meta
             avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-            title="Card title"
+            title={this.props.title}
             description="This is the description"
           />
           
@@ -225,7 +212,4 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
         );
       }
     }
-
-
-
 export default ResourceCard;
