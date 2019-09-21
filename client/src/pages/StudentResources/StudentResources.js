@@ -15,6 +15,7 @@ class StudentResources extends Component {
         loggedIn: false,
         user: null,
         resources: [],
+        selectedResources: []
     }
 
     componentDidMount() {
@@ -34,8 +35,12 @@ class StudentResources extends Component {
 
     }
 
-    loadHtml = () => {
-
+    handleCategoryClick = (category) => {
+        let resources = [...this.state.resources]
+        let selectedResources = resources.filter(resource => resource.categories.includes(category))
+        this.setState({
+            selectedResources
+        })
     }
 
     getAllResources = () => {
@@ -52,10 +57,11 @@ class StudentResources extends Component {
         <Layout>
         <Sider width={275} style={{ background: '#fff' }}>
             <ResourceSider
+            handleCategoryClick={this.handleCategoryClick}
             />
         </Sider>
         <Content style={{ height: '100vh'}}>
-            <ResourceCollection resources={this.state.resources} user={this.state.user}/></Content>
+            <ResourceCollection resources={this.state.selectedResources} user={this.state.user}/></Content>
         </Layout>
         
             </>

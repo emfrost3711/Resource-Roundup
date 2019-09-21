@@ -5,6 +5,9 @@ mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/roundup"
 );
+
+
+
 const resourcesSeed = [
   {
     fileType: "pdf",
@@ -109,6 +112,8 @@ const resourcesSeed = [
     categories: ["css"],
     comments: []
   },
+
+
 ];
 // const testComment = [
 //   {
@@ -132,7 +137,10 @@ db.Resource
     console.error(err);
     // process.exit(1);
   });
+
   
+
+
   // db.Comments.collection.insertMany(testComment)
   // .then(data => {
   //   console.log(data.result.n + " comments inserted!");
