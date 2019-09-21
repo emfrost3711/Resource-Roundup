@@ -33,20 +33,6 @@ app.get("/test", function(req, res) {
   .catch(err => res.json(err))
 })
 
-app.get("/resources/:id", function(req, res) {
-  let ID = req.params.id
-  console.log(ID)
-  db.Resource.findOne({ _id: ID})
-  // .populate("comment user")
-  .then(function(dbResource) {
-    res.json(dbResource);
-  })
-  .catch(function(err) {
-    // If an error occurs, send it back to the client
-    res.json(err);
-  });
-})
-
 app.use(routes);
 
 if (process.env.NODE_ENV === "production") {
@@ -62,26 +48,11 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/roundup", { use
     });
 });
 
-db.Resource.create({ title: "sample resource" })
-.then(function(dbResource) {
-  console.log(dbResource);
-})
-.catch(function(err) {
-  console.log(err.message);
-});
 
-db.Tag_List.create({ tag: "sample tag" })
-.then(function(dbTag_List) {
-  console.log(dbTag_List);
-})
 
-db.Category_List.create({ category: "sample category" })
-.then(function(dbCategory_List) {
-  console.log(dbCategory_List);
-})
-.catch(function(err) {
-  console.log(err.message);
-});
+
+
+
 
 //test route for adding to the favorites array
 // app.post("/favorites", function (req, res) {
@@ -98,30 +69,7 @@ db.Category_List.create({ category: "sample category" })
 //   })
 // });
 
-app.get("/resources", function(req, res) {
-  // Find all users
-  db.Resource.find({})
-  // Specify that we want to populate the retrieved users with any associated notes
-  .populate("title")
-  .then(function(dbResource) {
-    // If able to successfully find and associate all Users and Notes, send them back to the client
-    res.json(dbResource);
-  })
-  .catch(function(err) {
-    // If an error occurs, send it back to the client
-    res.json(err);
-  });
-});
 
-app.post("/resources", function(req, res) {
-  db.Resource.create(req.body)
-  .then(dbResource => res.json(dbResource))
-  .catch(err => res.json(err))
-})
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
 
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/roundup", { useNewUrlParser: true }, function(err) {
 //   if (err) throw err;
@@ -131,4 +79,6 @@ if (process.env.NODE_ENV === "production") {
 //     console.log(`connected on port ${PORT}`.cyan)
 //   });
 // });
-
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}

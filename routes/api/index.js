@@ -10,8 +10,8 @@ const commentRoutes = require("./commentRoutes")
 router.use("/users", userRoutes);
 router.use("/todos", todoRoutes);
 router.use("/resources", resourceRoutes);
-router.use("/tagRoutes", tagRoutes);
-router.use("/categoryRoutes", categoryRoutes);
+router.use("/tag", tagRoutes);
+router.use("/category", categoryRoutes);
 router.use("/comments", commentRoutes)
 router.use("/favorites", favoritesRoutes);
 // router.use("/commentRoutes", commentRoutes)
