@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const db = require("../models");
-
 // This file empties the Resources collection and inserts the resources below
-
 mongoose.connect(
   process.env.MONGODB_URI ||
   "mongodb://localhost/roundup"
@@ -340,10 +338,8 @@ const resourcesSeed = [
 
 // const testFavorite = [
 //   {
-
 //   }
 // ]
-
 db.Resource
   .remove({})
   .then(() => db.Resource.collection.insertMany(resourcesSeed))
