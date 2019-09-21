@@ -8,6 +8,9 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 
 const resourceSchema = new Schema({
+    type: {
+      type: String
+    },
     title: {
       type: String,
       required: "title is required"
@@ -33,7 +36,7 @@ const resourceSchema = new Schema({
     dislikes: {
       type: Number
     },
-    category: [{
+    categories: [{
       type: Schema.Types.ObjectId,
       ref: "Category_List"
     }],
@@ -41,9 +44,9 @@ const resourceSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref:"Tag_List"
     }],
-    comment: [{
+    comments: [{
       type: Schema.Types.ObjectId,
-      ref:"Comments"
+      ref:"Comment"
     }]
     // approved: {
     //   type: Boolean,

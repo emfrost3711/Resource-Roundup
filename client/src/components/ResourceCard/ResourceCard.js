@@ -13,12 +13,15 @@ class ResourceCard extends Component {
         likes: 0,
     dislikes: 0,
     action: null,
-    visible: false
+    visible: false,
+    type: "video"
   
       };
     
     componentDidMount() {
         this.loading()
+
+
     }
     
     showModal = () => {
@@ -89,49 +92,135 @@ class ResourceCard extends Component {
         </Modal>
       </div>
        
+       {this.state.type === "pdf" ? (
+       
+       <Card
+          style={{ width: 300, marginTop: 16 }}
+          actions={[
+          
+              <span key="comment-basic-like">
+                     <Tooltip title="Like">
+                      <Icon
+                        type="like"
+                        theme={action === 'liked' ? 'filled' : 'outlined'}
+                        onClick={this.like}
+                      />
+                    </Tooltip>
+                    {" "}
+                    <span style={{ paddingLeft: 8, cursor: 'auto' }}>{likes}</span>
+                    {" "}
+                    <Tooltip title="Dislike">
+                      <Icon
+                        type="dislike"
+                        theme={action === 'disliked' ? 'filled' : 'outlined'}
+                        onClick={this.dislike}
+                      />
+                    </Tooltip>
+                    {" "}
+                    <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
+                </span>,
+              <Icon type="message" key="message" onClick={this.showModal}/>,
+              <Icon type="heart" key="heart" onClick={this.addToFavorites} />,
+            ]}
+        >
+          <Skeleton loading={loading} avatar active>
+            <Meta
+              avatar={
+                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+              }
+              title="Card title"
+              description="This is the description"
+            />
+          </Skeleton>
+        </Card>)
+
+        : this.state.type === "video" ? (<Card
+          style={{ width: 300 }} 
+          cover={
+            <iframe src="https:///codingbootcamp.hosted.panopto.com/
+Panopto/Pages/Embed.aspx?id=8dae9a0b-1cbc-48d8-88f0-aa2d00085a60"
+style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
+          }
+          actions={[
+            <span key="comment-basic-like">
+                   <Tooltip title="Like">
+                    <Icon
+                      type="like"
+                      theme={action === 'liked' ? 'filled' : 'outlined'}
+                      onClick={this.like}
+                    />
+                  </Tooltip>
+                  {" "}
+                  <span style={{ paddingLeft: 8, cursor: 'auto' }}>{likes}</span>
+                  {" "}
+                  <Tooltip title="Dislike">
+                    <Icon
+                      type="dislike"
+                      theme={action === 'disliked' ? 'filled' : 'outlined'}
+                      onClick={this.dislike}
+                    />
+                  </Tooltip>
+                  {" "}
+                  <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
+              </span>,
+            <Icon type="message" key="message" onClick={this.showModal}/>,
+            <Icon type="heart" key="heart" onClick={this.addToFavorites} />,
+          ]}
+          
+        >
+          <Meta
+            avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+            title="Card title"
+            description="This is the description"
+          />
+          
+        </Card>)
+
+        :  (<Card
+          style={{ width: 300 }} 
+          cover={
+            <img
+              alt="example"
+              src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+            />
+          }
+          actions={[
+            <span key="comment-basic-like">
+                   <Tooltip title="Like">
+                    <Icon
+                      type="like"
+                      theme={action === 'liked' ? 'filled' : 'outlined'}
+                      onClick={this.like}
+                    />
+                  </Tooltip>
+                  {" "}
+                  <span style={{ paddingLeft: 8, cursor: 'auto' }}>{likes}</span>
+                  {" "}
+                  <Tooltip title="Dislike">
+                    <Icon
+                      type="dislike"
+                      theme={action === 'disliked' ? 'filled' : 'outlined'}
+                      onClick={this.dislike}
+                    />
+                  </Tooltip>
+                  {" "}
+                  <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
+              </span>,
+            <Icon type="message" key="message" onClick={this.showModal}/>,
+            <Icon type="heart" key="heart" onClick={this.addToFavorites} />,
+          ]}
+          
+        >
+          <Meta
+            avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+            title="Card title"
+            description="This is the description"
+          />
+          
+        </Card>)
+      }
       
-    <Card
-    style={{ width: 300 }} 
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-    actions={[
-      <span key="comment-basic-like">
-             <Tooltip title="Like">
-              <Icon
-                type="like"
-                theme={action === 'liked' ? 'filled' : 'outlined'}
-                onClick={this.like}
-              />
-            </Tooltip>
-            {" "}
-            <span style={{ paddingLeft: 8, cursor: 'auto' }}>{likes}</span>
-            {" "}
-            <Tooltip title="Dislike">
-              <Icon
-                type="dislike"
-                theme={action === 'disliked' ? 'filled' : 'outlined'}
-                onClick={this.dislike}
-              />
-            </Tooltip>
-            {" "}
-            <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
-        </span>,
-      <Icon type="message" key="message" onClick={this.showModal}/>,
-      <Icon type="heart" key="heart" onClick={this.addToFavorites} />,
-    ]}
     
-  >
-    <Meta
-      avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-      title="Card title"
-      description="This is the description"
-    />
-    
-  </Card>
 </>
         );
       }

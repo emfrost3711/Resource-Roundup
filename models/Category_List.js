@@ -8,6 +8,9 @@ const Category_ListSchema = new Schema({
     type: String,
     unique: true
   },
+  resources: [{
+    type: Schema.Types.ObjectId, ref: "Resource", required: true
+  }]
 
 
 });

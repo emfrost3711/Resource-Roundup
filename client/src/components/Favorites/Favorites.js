@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Card } from 'antd';
-import { userInfo } from "os";
+
 
 class Favorites extends Component {
 
@@ -10,6 +10,7 @@ class Favorites extends Component {
 
     componentDidMount() {
         // API function to get users favorites
+        // API.getFavorites
     }
 
     render () {
