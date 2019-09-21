@@ -3,14 +3,8 @@ import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import ResourceSider from "../../components/ResourceMenu";
 import "./StudentResources.css";
-import ResourceCard from "../../components/ResourceCard";
 import { Layout } from 'antd';
-<<<<<<< HEAD
-
-=======
-import CommentModal from "../../components/Modal";
 import ResourceCollection from "../../components/ResourceCollection"
->>>>>>> 197bad9b0d8cefa9e810b11e51853e1e7568bdc9
 
 const { Sider, Content } = Layout;
 
@@ -21,6 +15,7 @@ class StudentResources extends Component {
         loggedIn: false,
         user: null,
         resources: [],
+        selectedResources: []
     }
 
     componentDidMount() {
@@ -40,8 +35,12 @@ class StudentResources extends Component {
 
     }
 
-    loadHtml = () => {
-
+    handleCategoryClick = (category) => {
+        let resources = [...this.state.resources]
+        let selectedResources = resources.filter(resource => resource.categories.includes(category))
+        this.setState({
+            selectedResources
+        })
     }
 
     getAllResources = () => {
@@ -58,9 +57,12 @@ class StudentResources extends Component {
         <Layout>
         <Sider width={275} style={{ background: '#fff' }}>
             <ResourceSider
+            handleCategoryClick={this.handleCategoryClick}
             />
         </Sider>
-        <Content style={{ height: '100vh'}}><ResourceCollection resources={this.state.resources} /></Content>
+        <Content style={{ height: '100vh'}}>
+            <ResourceCollection resources={this.state.selectedResources} />
+        </Content>
         </Layout>
         
             </>
