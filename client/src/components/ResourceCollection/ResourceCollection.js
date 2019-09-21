@@ -32,7 +32,7 @@ export class ResourceCollection extends Component {
                 image = {resource.image}
                 likes = {resource.likes}
                 dislikes = {resource.dislikes}
-                type = {resource.type}
+                fileType = {resource.fileType}
                 />
                 )}
 

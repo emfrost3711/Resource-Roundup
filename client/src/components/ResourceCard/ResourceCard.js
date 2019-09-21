@@ -79,7 +79,7 @@ class ResourceCard extends Component {
         </Modal>
       </div>
        
-       {this.props.type === "pdf" ? (
+       {this.props.fileType === "pdf" ? (
        
        <Card
           style={{ width: 300, marginTop: 16 }}
@@ -120,7 +120,7 @@ class ResourceCard extends Component {
             />
           </Skeleton>
         </Card>)
-        : this.props.type === "video" ? (<Card
+        : this.props.fileType === "video" ? (<Card
           style={{ width: 300 }} 
           cover={
             <iframe src={this.props.image}
