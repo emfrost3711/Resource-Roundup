@@ -6,62 +6,7 @@ mongoose.connect(
   "mongodb://localhost/roundup"
 );
 
-const categorySeed = [
- 
-  {
-    category: "HTML",
-    unique: true
-  },
 
-  {
-    category: "CSS",
-    unique: true
-  },
-
-  {
-    category: "JavaScript",
-    unique: true
-  },
-
-  {
-    category: "AJAX & APIs",
-    unique: true
-  },
-
-  {
-    category: "Databases",
-    unique: true
-  },
-
-  {
-    category: "Databases",
-    unique: true
-  },
-  {
-    category: "Git & GitHub",
-    unique: true
-  },
-  {
-    category: "Handlebars",
-    unique: true
-    },
-  {
-    category: "Terminal",
-    unique: true
-    },
-  {
-    category: "Testing",
-    unique: true
-    },  
-  {
-    category: "React",
-    unique: true
-  },
-  {
-    category: "Review Sessions",
-    unique: true
-    },
-]
 
 const resourcesSeed = [
   {
@@ -73,7 +18,7 @@ const resourcesSeed = [
     likes: 0,
     dislikes: 0,
     tags: [],
-    categories: [],
+    categories: ["html"],
     comments: []
   },
   {
@@ -81,12 +26,11 @@ const resourcesSeed = [
     title: "15 Funny Lorem Ipsum Generators to Shake Up Your Design Mockups",
     link: "https://www.shopify.com/partners/blog/79940998-15-funny-lorem-ipsum-generators-to-shake-up-your-design-mockups",
     image: "https://cdn.shopify.com/s/files/1/0533/2089/files/lorem-ipsum-generator.jpg?v=1555505887",
-    image: "",
     source_s3: "",
     likes: 0,
     dislikes: 0,
     tags: [],
-    categories: [],
+    categories: ["html"],
     comments: []
   },
   {
@@ -94,12 +38,11 @@ const resourcesSeed = [
     title: "Lesson 1.1 - My first HTML - YouTube",
     link: "https://www.youtube.com/watch?v=ieb6Svbc10E",
     image: "https://www.youtube.com/embededieb6Svbc10E",
-    image: "",
     source_s3: "",
     likes: 0,
     dislikes: 0,
     tags: [],
-    categories: [],
+    categories: ["javascript"],
     comments: []
   },
   {
@@ -110,7 +53,7 @@ const resourcesSeed = [
     likes: 0,
     dislikes: 0,
     tags: [],
-    categories: [],
+    categories: ["javascript", "basics"],
     comments: []
   },
 
@@ -125,7 +68,7 @@ const resourcesSeed = [
     likes: 0,
     dislikes: 0,
     tags: [],
-    categories: [],
+    categories: ["javascript", "ajax"],
     comments: []
   },
 
@@ -140,7 +83,7 @@ const resourcesSeed = [
     likes: 0,
     dislikes: 0,
     tags: [],
-    categories: [],
+    categories: ["css"],
     comments: []
   },
 
@@ -155,7 +98,7 @@ const resourcesSeed = [
     likes: 0,
     dislikes: 0,
     tags: [],
-    categories: [],
+    categories: ["css"],
     comments: []
   },
 
@@ -170,159 +113,10 @@ const resourcesSeed = [
     likes: 0,
     dislikes: 0,
     tags: [],
-    categories: [],
+    categories: ["css"],
     comments: []
   },
 
-  {
-    fileType: "",
-    title: "",
-    link: "",
-    image: "",
-    contributor: "",
-    author: "",
-    source_s3: "",
-    likes: 0,
-    dislikes: 0,
-    tags: [],
-    categories: [],
-    comments: []
-  },
-
-  {
-    fileType: "",
-    title: "",
-    link: "",
-    image: "",
-    contributor: "",
-    author: "",
-    source_s3: "",
-    likes: 0,
-    dislikes: 0,
-    tags: [],
-    categories: [],
-    comments: []
-  },
-
-  {
-    fileType: "",
-    title: "",
-    link: "",
-    image: "",
-    contributor: "",
-    author: "",
-    source_s3: "",
-    likes: 0,
-    dislikes: 0,
-    tags: [],
-    categories: [],
-    comments: []
-  },
-
-  {
-    fileType: "",
-    title: "",
-    link: "",
-    image: "",
-    contributor: "",
-    author: "",
-    source_s3: "",
-    likes: 0,
-    dislikes: 0,
-    tags: [],
-    categories: [],
-    comments: []
-  },
-
-  {
-    fileType: "",
-    title: "",
-    link: "",
-    image: "",
-    contributor: "",
-    author: "",
-    source_s3: "",
-    likes: 0,
-    dislikes: 0,
-    tags: [],
-    categories: [],
-    comments: []
-  },
-
-  {
-    fileType: "",
-    title: "",
-    link: "",
-    image: "",
-    contributor: "",
-    author: "",
-    source_s3: "",
-    likes: 0,
-    dislikes: 0,
-    tags: [],
-    categories: [],
-    comments: []
-  },
-
-  {
-    fileType: "",
-    title: "",
-    link: "",
-    image: "",
-    contributor: "",
-    author: "",
-    source_s3: "",
-    likes: 0,
-    dislikes: 0,
-    tags: [],
-    categories: [],
-    comments: []
-  },
-
-  {
-    fileType: "",
-    title: "",
-    link: "",
-    image: "",
-    contributor: "",
-    author: "",
-    source_s3: "",
-    likes: 0,
-    dislikes: 0,
-    tags: [],
-    categories: [],
-    comments: []
-  },
-
-  {
-    fileType: "",
-    title: "",
-    link: "",
-    image: "",
-    contributor: "",
-    author: "",
-    source_s3: "",
-    likes: 0,
-    dislikes: 0,
-    tags: [],
-    categories: [],
-    comments: []
-  },
-
-  {
-    fileType: "",
-    title: "",
-    link: "",
-    image: "",
-    contributor: "",
-    author: "",
-    source_s3: "",
-    likes: 0,
-    dislikes: 0,
-    tags: [],
-    categories: [],
-    comments: []
-  },
 
 ];
 
@@ -352,18 +146,7 @@ db.Resource
     // process.exit(1);
   });
 
-  db.Category_List
-  .remove({})
-  .then(() => db.Resource.collection.insertMany(categorySeed))
-  .then(data => {
-    console.log(data.result.n + " category records inserted!");
-    // process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
-
+  
 
 
   // db.Comments.collection.insertMany(testComment)

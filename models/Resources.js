@@ -36,14 +36,12 @@ const resourceSchema = new Schema({
     dislikes: {
       type: Number
     },
-    categories: [{
-      type: Schema.Types.ObjectId,
-      ref: "Category_List"
-    }],
-    tags: [{
-      type: Schema.Types.ObjectId,
-      ref:"Tag_List"
-    }],
+    categories: {
+      type: [String]
+    },
+    tags: {
+      type: [String]
+    },
     comments: [{
       type: Schema.Types.ObjectId,
       ref:"Comment"

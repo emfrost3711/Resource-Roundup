@@ -53,7 +53,7 @@ class ResourceSider extends Component {
               <span>HTML</span>
             </span>
           }
-          onTitleClick= {this.loadHtml}
+          onTitleClick= {() => {this.props.handleCategoryClick("html")}}
         >
           <Menu.Item key="1">Option 1</Menu.Item>
           <Menu.Item key="2">Option 2</Menu.Item>
@@ -71,10 +71,7 @@ class ResourceSider extends Component {
         >
           <Menu.Item key="5">Option 5</Menu.Item>
           <Menu.Item key="6">Option 6</Menu.Item>
-          <SubMenu key="sub3" title="Submenu">
-            <Menu.Item key="7">Option 7</Menu.Item>
-            <Menu.Item key="8">Option 8</Menu.Item>
-          </SubMenu>
+         
         </SubMenu>
         <SubMenu
           key="sub4"
@@ -85,24 +82,18 @@ class ResourceSider extends Component {
             </span>
           }
         >
-          <Menu.Item key="9">Option 9</Menu.Item>
-          <Menu.Item key="10">Option 10</Menu.Item>
-          <Menu.Item key="11">Option 11</Menu.Item>
-          <Menu.Item key="12">Option 12</Menu.Item>
-        </SubMenu>
-        <SubMenu
-          key="sub5"
-          title={
-            <span>
-              <Icon type="setting" />
-              <span>AJAX</span>
-            </span>
-          }
-        >
-          <Menu.Item key="9">Option 9</Menu.Item>
-          <Menu.Item key="10">Option 10</Menu.Item>
-          <Menu.Item key="11">Option 11</Menu.Item>
-          <Menu.Item key="12">Option 12</Menu.Item>
+
+            <Menu.Item key="basics">Basics</Menu.Item>
+            <Menu.Item key="15">JS Review</Menu.Item>
+            <Menu.Item key="16">ES6</Menu.Item>
+            <Menu.Item key="11">jQuery</Menu.Item>
+            <Menu.Item key="12">AJAX / APIs</Menu.Item>
+            <Menu.Item key="22">Timers</Menu.Item>
+            <Menu.Item key="14">Constructors / Prototypes</Menu.Item>
+            <Menu.Item key="10">String Methods</Menu.Item>
+            <Menu.Item key="55">Array Methods</Menu.Item>
+            <Menu.Item key="13">Quirks</Menu.Item>
+
         </SubMenu>
       </Menu></>
     );
