@@ -35,6 +35,7 @@ export class ResourceCollection extends Component {
                                 likes={resource.likes}
                                 dislikes={resource.dislikes}
                                 fileType={resource.fileType}
+                                user={this.props.user}
                             />
                         )}
                     </>

@@ -61,8 +61,7 @@ class StudentResources extends Component {
             />
         </Sider>
         <Content style={{ height: '100vh'}}>
-            <ResourceCollection resources={this.state.selectedResources} />
-        </Content>
+            <ResourceCollection resources={this.state.selectedResources} user={this.state.user}/></Content>
         </Layout>
         
             </>

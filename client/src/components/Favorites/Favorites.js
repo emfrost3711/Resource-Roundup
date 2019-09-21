@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import { Card } from 'antd';
+import API from "../../utils/API";
+import ResourceCard from "../ResourceCard/ResourceCard";
 
 
 class Favorites extends Component {
@@ -9,6 +11,11 @@ class Favorites extends Component {
     }
 
     componentDidMount() {
+        API.showFavorites(this.props.userId)
+        .then(favorites => {
+            this.setState ({favorites: favorites.data.favorites})
+            console.log(this.state);
+        });
         // API function to get users favorites
         // API.getFavorites
     }
@@ -26,7 +33,11 @@ class Favorites extends Component {
         fontWeight: 500,
       }}
     >
-    
+    {this.state.favorites.forEach(favorite => {
+        return <ResourceCard title= {favorite.title}/>
+
+    }
+        )}
   </Card>
             </>
         )

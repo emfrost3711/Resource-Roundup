@@ -56,7 +56,6 @@ const resourcesSeed = [
     categories: ["javascript", "basics"],
     comments: []
   },
-
   {
     fileType: "pdf",
     title: "Steps To Upload to Github",
@@ -71,7 +70,6 @@ const resourcesSeed = [
     categories: ["javascript", "ajax"],
     comments: []
   },
-
   {
     fileType: "pdf",
     title: "Git Branching Guide",
@@ -86,7 +84,6 @@ const resourcesSeed = [
     categories: ["css"],
     comments: []
   },
-
   {
     fileType: "pdf",
     title: "MySQLHerokuDeploymentProcess.pdf",
@@ -101,7 +98,6 @@ const resourcesSeed = [
     categories: ["css"],
     comments: []
   },
-
   {
     fileType: "pdf",
     title: "SequelizeHerokuDeploymentProcess.pdf",
@@ -119,17 +115,13 @@ const resourcesSeed = [
 
 
 ];
-
-
 // const testComment = [
 //   {
 //     resource: "5d82f5384af5ca4117aed2a7",
 //     user: "5d82efb4a160803fb64390a2",
 //     comment: "learning is fun"
 //   }
-
 // ]
-
 // const testFavorite = [
 //   {
 //   }

@@ -48,7 +48,8 @@ class StudentDash extends Component {
                         <br />
                         <h1 id="userTitle">Howdy, {this.state.user.username} !</h1>
                         <br />
-                        <Favorites />
+                        <Favorites 
+                        userId={this.state.user._id}/>
                         <br />
                         <br />
                         <TabsCard />

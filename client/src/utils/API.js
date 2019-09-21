@@ -48,9 +48,15 @@ export default {
 
   updateTodo: function() {
     return axios.put("/api/todos/update")
+  },
+
+  addFavorite: function(favoriteData) {
+    return axios.post("/api/favorites", favoriteData)
+  },
+
+  showFavorites: function(userId) {
+    return axios.get("/api/favorites/" + userId)
   }
-
-
 };
 
 // copied from react 20.10 utils folder

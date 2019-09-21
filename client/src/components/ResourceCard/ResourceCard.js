@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import API from "../../utils/API";
 import { Skeleton, Card, Icon, Avatar, Tooltip, Modal, Button } from 'antd';
 import CommentForm from "../CommentForm";
+
 const { Meta } = Card;
 class ResourceCard extends Component {
     state = {
@@ -62,6 +63,15 @@ class ResourceCard extends Component {
         visible: false,
       });
     };
+
+    addToFavorites = e => {
+      console.log(this.props.user);
+      console.log(this.props.resourceId);
+      let favoriteData = {user_id: this.props.user._id, resource: this.props.resourceId}
+      API.addFavorite(favoriteData)
+    }
+
+    
       render() {
         const { loading, likes, dislikes, action } = this.state;
         
