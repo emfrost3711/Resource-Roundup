@@ -8,15 +8,41 @@ mongoose.connect(
   "mongodb://localhost/roundup"
 );
 
-const resourcesSeed = [
+const categorySeed = [
+  //Emily HI!! how are you?? this is where you can load the categories you identified - xoxo Gwen
   {
-    fileType: "pdf",
-    title: "test title",
-    tags: ["5d8429b9fb722d44fa3ee439"],
-    categories: ["5d8429b9fb722d44fa3ee43a"],
-    comments: ["5d843c6ede37a447d542a2fc"],
-    source_s3: "s3://resourceroundup/computer_theory/Wk 22 Day 3 - webdev-22-3-big-o-and-data-structures.pdf"
+    type: "",
+    unique: true
   },
+
+  {
+    type: "",
+    unique: true
+  },
+
+  {
+    type: "",
+    unique: true
+  },
+
+  {
+    type: "",
+    unique: true
+  },
+
+  {
+    type: "",
+    unique: true
+  },
+
+  {
+    type: "",
+    unique: true
+  },
+
+]
+
+const resourcesSeed = [
   {
     fileType: "pdf",
     title: "HTML5 Element Flowchart",
@@ -65,7 +91,218 @@ const resourcesSeed = [
     tags: [],
     categories: [],
     comments: []
-  }
+  },
+
+  {
+    fileType: "pdf",
+    title: "Steps To Upload to Github",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "https://resourceroundup.s3.us-east-2.amazonaws.com/resources/Git/Steps+To+Upload+to+Github.pdf",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "pdf",
+    title: "Git Branching Guide",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "https://resourceroundup.s3.us-east-2.amazonaws.com/resources/Git/Git+Branching+Guide.pdf",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "pdf",
+    title: "MySQLHerokuDeploymentProcess.pdf",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "https://resourceroundup.s3.us-east-2.amazonaws.com/resources/Heroku/MySQLHerokuDeploymentProcess.pdf",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "pdf",
+    title: "SequelizeHerokuDeploymentProcess.pdf",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "https://resourceroundup.s3.us-east-2.amazonaws.com/resources/Heroku/SequelizeHerokuDeploymentProcess.pdf",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "",
+    title: "",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "",
+    title: "",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "",
+    title: "",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "",
+    title: "",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "",
+    title: "",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "",
+    title: "",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "",
+    title: "",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "",
+    title: "",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "",
+    title: "",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
+  {
+    fileType: "",
+    title: "",
+    link: "",
+    image: "",
+    contributor: "",
+    author: "",
+    source_s3: "",
+    likes: 0,
+    dislikes: 0,
+    tags: [],
+    categories: [],
+    comments: []
+  },
+
 ];
 
 
@@ -93,11 +330,23 @@ db.Resource
   })
   .catch(err => {
     console.error(err);
+    // process.exit(1);
+  });
+
+  db.Category_List
+  .remove({})
+  .then(() => db.Resource.collection.insertMany(categorySeed))
+  .then(data => {
+    console.log(data.result.n + " category records inserted!");
+    // process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
     process.exit(1);
   });
 
-  
-  
+
+
   // db.Comments.collection.insertMany(testComment)
   // .then(data => {
   //   console.log(data.result.n + " comments inserted!");
