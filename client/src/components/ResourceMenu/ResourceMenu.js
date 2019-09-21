@@ -6,12 +6,12 @@ const dataSource = ['html','css' ,'javascript'];
 
 class ResourceSider extends Component {
   // submenu keys of first level
-  rootSubmenuKeys = ['sub1', 'sub2', 'sub4','sub5'];
+  rootSubmenuKeys = ['HTML', 'CSS', 'JAVASCRIPT', ''];
 
 
-state = {
-      openKeys: [],
-    };
+  state = {
+    openKeys: [],
+  };
 
 
 
@@ -26,7 +26,7 @@ state = {
     }
   };
 
-  
+
 
   render() {
     return (

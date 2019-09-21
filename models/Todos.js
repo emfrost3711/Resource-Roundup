@@ -1,22 +1,24 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const todosSchema = new Schema({
-  author: {
-    type: Schema.Types.ObjectId,
-    ref: "User"
-  },
-  todo: {
+const todoSchema = new Schema({
+  body: {
     type: String,
-    unique: false,
-    required: [true, "text is required"]
+    trim: true,
+    required: 'Please enter a task!',
+    validate: [
+      function(input) {
+        return input.length >= 4;
+      },
+      "Task length should be longer than four characters long!"
+    ]
   },
-  createdAt: {
-    type: Date,
-    default: Date.now()
-  }
+  isComplete: { type: Boolean, required: true, default: "false" },
+  date: { type: Date, default: Date.now },
+  //Associate the _id from the User model to the task
+  userId: { type: Schema.Types.ObjectId, ref: "User", required: true }
 });
 
-const Todo = mongoose.model("Todo", todosSchema);
+const Todo = mongoose.model("Todo", todoSchema);
 
 module.exports = Todo;

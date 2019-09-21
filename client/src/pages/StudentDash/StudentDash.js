@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import TabsCard from "../../components/ScheduleCard";
 import Favorites from "../../components/Favorites";
+import Request from "../../components/RequestResource";
 
 class StudentDash extends Component {
     state = {
@@ -51,6 +52,9 @@ class StudentDash extends Component {
                         <br />
                         <br />
                         <TabsCard />
+                        <br />
+                        <br />
+                        <Request/>
                     </div>
                 ) : (
                     <div className="noUser">

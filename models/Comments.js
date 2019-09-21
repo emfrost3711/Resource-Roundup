@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 const commentsSchema = new Schema({
   resource: {
     type: Schema.Types.ObjectId,
@@ -16,7 +15,5 @@ const commentsSchema = new Schema({
     required: [true, "text is required"]
   },
 });
-
 const Comments = mongoose.model("Comments", commentsSchema);
-
 module.exports = Comments;

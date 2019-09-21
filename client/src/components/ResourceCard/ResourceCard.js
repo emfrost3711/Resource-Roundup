@@ -15,6 +15,8 @@ class ResourceCard extends Component {
     
     componentDidMount() {
         this.loading()
+
+
     }
     
     showModal = () => {

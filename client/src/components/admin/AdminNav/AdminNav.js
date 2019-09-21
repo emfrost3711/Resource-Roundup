@@ -11,13 +11,13 @@ const AdminNav = (props) =>
     <NavLink href="/admin/dashboard">Dashboard</NavLink>
 </DropdownItem>
 <DropdownItem>
-    <NavLink onClick={props.logout}>Logout</NavLink>
-</DropdownItem>
-<DropdownItem>
     <NavLink href="/resources">Resources</NavLink>
 </DropdownItem>
 <DropdownItem>
-    <NavLink href="/resources">Settings</NavLink>
+    <NavLink href="/settings">Settings</NavLink>
+</DropdownItem>
+<DropdownItem>
+    <NavLink onClick={props.logout}>Logout</NavLink>
 </DropdownItem>
 </>)
 }

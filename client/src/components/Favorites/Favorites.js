@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Card } from 'antd';
-import { userInfo } from "os";
+
 
 class Favorites extends Component {
 
@@ -10,6 +10,7 @@ class Favorites extends Component {
 
     componentDidMount() {
         // API function to get users favorites
+        // API.getFavorites
     }
 
     render () {
@@ -25,20 +26,7 @@ class Favorites extends Component {
         fontWeight: 500,
       }}
     >
-    <p>
-      Group title
-    </p>
-    <Card type="inner" title="Inner Card title" extra={<a href="#">More</a>}>
-      Inner Card content
-    </Card>
-    <Card
-      style={{ marginTop: 16 }}
-      type="inner"
-      title="Inner Card title"
-      extra={<a href="#">More</a>}
-    >
-      Inner Card content
-    </Card>
+    
   </Card>
             </>
         )
