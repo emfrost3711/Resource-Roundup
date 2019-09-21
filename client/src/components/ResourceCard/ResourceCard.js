@@ -14,7 +14,7 @@ class ResourceCard extends Component {
     dislikes: 0,
     action: null,
     visible: false,
-    type: "video"
+    type: ""
   
       };
     

@@ -10,13 +10,6 @@ mongoose.connect(
 
 const resourcesSeed = [
   {
-    title: "test title",
-    tags: ["5d8429b9fb722d44fa3ee439"],
-    categories: ["5d8429b9fb722d44fa3ee43a"],
-    comments: ["5d843c6ede37a447d542a2fc"],
-    source_s3: "s3://resourceroundup/computer_theory/Wk 22 Day 3 - webdev-22-3-big-o-and-data-structures.pdf"
-  },
-  {
     type: "pdf",
     title: "HTML5 Element Flowchart",
     link: "http://html5doctor.com/downloads/h5d-sectioning-flowchart.pdf",
@@ -44,7 +37,6 @@ const resourcesSeed = [
     title: "Lesson 1.1 - My first HTML - YouTube",
     link: "https://www.youtube.com/watch?v=ieb6Svbc10E",
     image: "https://www.youtube.com/embededieb6Svbc10E",
-    image: "",
     likes: 0,
     dislikes: 0,
     tags: ["5d8429b9fb722d44fa3ee439"],
