@@ -9,37 +9,60 @@ mongoose.connect(
 );
 
 const categorySeed = [
-  //Emily HI!! how are you?? this is where you can load the categories you identified - xoxo Gwen
+ 
   {
-    type: "",
+    category: "HTML",
     unique: true
   },
 
   {
-    type: "",
+    category: "CSS",
     unique: true
   },
 
   {
-    type: "",
+    category: "JavaScript",
     unique: true
   },
 
   {
-    type: "",
+    category: "AJAX & APIs",
     unique: true
   },
 
   {
-    type: "",
+    category: "Databases",
     unique: true
   },
 
   {
-    type: "",
+    category: "Databases",
     unique: true
   },
-
+  {
+    category: "Git & GitHub",
+    unique: true
+  },
+  {
+    category: "Handlebars",
+    unique: true
+    },
+  {
+    category: "Terminal",
+    unique: true
+    },
+  {
+    category: "Testing",
+    unique: true
+    },  
+  {
+    category: "React",
+    unique: true
+  },
+  {
+    category: "Review Sessions",
+    unique: true
+    },
 ]
 
 const resourcesSeed = [
