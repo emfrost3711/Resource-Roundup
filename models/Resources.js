@@ -8,6 +8,9 @@ var Schema = mongoose.Schema;
 // This is similar to a Sequelize model
 
 const resourceSchema = new Schema({
+    fileType: {
+      type: String,
+    },
     title: {
       type: String,
       required: "title is required"
