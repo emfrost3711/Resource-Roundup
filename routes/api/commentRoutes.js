@@ -3,7 +3,7 @@ const db = require("../../models");
 
 // // /api/categorys/all
 // // get all categorys from the signed in user
-router.get("/comments", function (req, res) {
+router.get("/", function (req, res) {
     // console.log('I am the comment route', req, res);
     db.Comments.find()
     .then(comments => res.json(comments))

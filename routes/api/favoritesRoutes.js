@@ -9,7 +9,7 @@ const authMiddleware = require("../../config/middleware/authMiddleware");
 
 
 
-router.post("/favorites", function (req, res) {
+router.post("/", function (req, res) {
     //create a new favorites in the database
     console.log(req.body);
     //when we get the front end wired up the front end should send and object containing a favorite id key value pair to steal and put in the favorites array (the mongo ID for the resource thing we want to save as a favorite); we will need to update the language below to grab the correct ids
