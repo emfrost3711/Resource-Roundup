@@ -3,12 +3,13 @@ import API from "../../utils/API";
 import { Skeleton, Card, Icon, Avatar, Tooltip, Modal, Button } from 'antd';
 import CommentForm from "../CommentForm";
 
+
 const { Meta } = Card;
 class ResourceCard extends Component {
     state = {
         loading: true,
-        likes: 0,
-        dislikes: 0,
+        likes: 4,
+        dislikes: 2,
         action: null,
         visible: false,
   
@@ -18,6 +19,10 @@ class ResourceCard extends Component {
         this.loading()
 
 
+    }
+
+    componentDidUpdate() {
+      this.updateLikesDislikes()
     }
     
     showModal = () => {
@@ -34,16 +39,16 @@ class ResourceCard extends Component {
     }
     like = () => {
       this.setState({
-        likes: 1,
-        dislikes: 0,
+        likes: this.state.likes + 1,
+        dislikes: this.state.dislikes,
         action: 'liked',
       });
     };
   
     dislike = () => {
       this.setState({
-        likes: 0,
-        dislikes: 1,
+        likes: this.state.likes,
+        dislikes: this.state.dislikes - 1,
         action: 'disliked',
       });
     };
@@ -63,6 +68,10 @@ class ResourceCard extends Component {
         visible: false,
       });
     };
+
+    updateLikesDislikes = e => {
+
+    }
 
     addToFavorites = e => {
       console.log(this.props.user);
@@ -171,8 +180,10 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
             description="This is the description"
           />
           
-        </Card>)
-        :  (<Card
+        </Card>
+        )
+        :  
+        (<Card
           style={{ width: 300 }} 
           cover={
             <img
