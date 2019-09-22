@@ -32,6 +32,19 @@ class StudentDash extends Component {
         console.log(this.props)
     }
 
+    handleFormSubmit = event => {
+        event.preventDefault();
+        if (this.state.comment) {
+            API.saveComment({
+                resource: this.state.resource,
+                user: this.state.userId,
+                comment: this.state.comment
+            })
+                .then(res => this.loadComments())
+                .catch(err => console.log(err));
+        }
+    };
+    
     loading() {
         setTimeout(()=> {
             this.setState({
