@@ -33,10 +33,10 @@ const usersSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Todo'
   }],
-  favorites: {
+  favorites: [{
     type: Schema.Types.ObjectId,
     ref: 'Resource'
-  }
+  }]
 });
 
 usersSchema.methods.generateHash = function (password) {
