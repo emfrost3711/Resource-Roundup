@@ -6,7 +6,7 @@ const dataSource = ['html','css' ,'javascript'];
 
 class ResourceSider extends Component {
   // submenu keys of first level
-  rootSubmenuKeys = ['HTML', 'CSS', 'JAVASCRIPT', ''];
+  rootSubmenuKeys = ['HTML', 'CSS', 'JAVASCRIPT'];
 
 
   state = {
@@ -55,10 +55,6 @@ class ResourceSider extends Component {
           }
           onTitleClick= {() => {this.props.handleCategoryClick("html")}}
         >
-          <Menu.Item key="1">Option 1</Menu.Item>
-          <Menu.Item key="2">Option 2</Menu.Item>
-          <Menu.Item key="3">Option 3</Menu.Item>
-          <Menu.Item key="4">Option 4</Menu.Item>
         </SubMenu>
         <SubMenu
           key="sub2"
@@ -68,31 +64,34 @@ class ResourceSider extends Component {
               <span>CSS</span>
             </span>
           }
+          onTitleClick= {() => {this.props.handleCategoryClick("css")}}
         >
-          <Menu.Item key="5">Option 5</Menu.Item>
-          <Menu.Item key="6">Option 6</Menu.Item>
+          <Menu.Item key="basicCss" onClick= {() => {this.props.handleCategoryClick("basicCss")}} >Basic</Menu.Item>
+          <Menu.Item key="advancedCSS" onClick= {() => {this.props.handleCategoryClick("advancedCss")}}>Advanced</Menu.Item>
+          <Menu.Item key="bootstrap" onClick= {() => {this.props.handleCategoryClick("bootstrap")}}>Bootstrap</Menu.Item>
          
         </SubMenu>
         <SubMenu
-          key="sub4"
+          key="javascript"
           title={
             <span>
               <Icon type="setting" />
               <span>Javascript</span>
             </span>
           }
+          onTitleClick= {() => {this.props.handleCategoryClick("javascript")}}
         >
 
-            <Menu.Item key="basics">Basics</Menu.Item>
-            <Menu.Item key="15">JS Review</Menu.Item>
-            <Menu.Item key="16">ES6</Menu.Item>
-            <Menu.Item key="11">jQuery</Menu.Item>
-            <Menu.Item key="12">AJAX / APIs</Menu.Item>
-            <Menu.Item key="22">Timers</Menu.Item>
-            <Menu.Item key="14">Constructors / Prototypes</Menu.Item>
-            <Menu.Item key="10">String Methods</Menu.Item>
-            <Menu.Item key="55">Array Methods</Menu.Item>
-            <Menu.Item key="13">Quirks</Menu.Item>
+            <Menu.Item key="basicJs" onClick= {() => {this.props.handleCategoryClick("basicJs")}}>Basics</Menu.Item>
+            <Menu.Item key="jsReview" onClick= {() => {this.props.handleCategoryClick("jsReview")}}>JS Review</Menu.Item>
+            <Menu.Item key="es6" onClick= {() => {this.props.handleCategoryClick("es6")}}>ES6</Menu.Item>
+            <Menu.Item key="jQuery" onClick= {() => {this.props.handleCategoryClick("jQuery")}}>jQuery</Menu.Item>
+            <Menu.Item key="ajaxAPI" onClick= {() => {this.props.handleCategoryClick("ajaxAPI")}}>AJAX / APIs</Menu.Item>
+            <Menu.Item key="timers" onClick= {() => {this.props.handleCategoryClick("timers")}}>Timers</Menu.Item>
+            <Menu.Item key="constructorsPrototypes" onClick= {() => {this.props.handleCategoryClick("constructorsPrototypes")}}>Constructors / Prototypes</Menu.Item>
+            <Menu.Item key="stringMethods" onClick= {() => {this.props.handleCategoryClick("stringMethod")}}>String Methods</Menu.Item>
+            <Menu.Item key="arrayMethods" onClick= {() => {this.props.handleCategoryClick("arrayMethod")}}>Array Methods</Menu.Item>
+            <Menu.Item key="quirks" onClick= {() => {this.props.handleCategoryClick("quirks")}}>Quirks</Menu.Item>
 
         </SubMenu>
       </Menu></>
