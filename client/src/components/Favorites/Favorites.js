@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { Card } from 'antd';
 import API from "../../utils/API";
-import ResourceCard from "../ResourceCard/ResourceCard";
+import FavoritesCard from "../FavoritesCard";
 
 
 class Favorites extends Component {
@@ -33,11 +33,19 @@ class Favorites extends Component {
         fontWeight: 500,
       }}
     >
-    {this.state.favorites.forEach(favorite => {
-        return <ResourceCard title= {favorite.title}/>
-
-    }
-        )}
+    {this.state.favorites.map((favorite, index) =>
+        <FavoritesCard
+            favoriteId={favorite._id}
+            key={index}
+            title={favorite.title}
+            link={favorite.link}
+            image={favorite.image}
+            likes={favorite.likes}
+            dislikes={favorite.dislikes}
+            fileType={favorite.fileType}
+            user={this.props.user}
+            />
+    )}
   </Card>
             </>
         )
