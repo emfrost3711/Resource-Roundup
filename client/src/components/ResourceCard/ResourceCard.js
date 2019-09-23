@@ -48,7 +48,7 @@ class ResourceCard extends Component {
     dislike = () => {
       this.setState({
         likes: this.state.likes,
-        dislikes: this.state.dislikes - 1,
+        dislikes: this.state.dislikes + 1,
         action: 'disliked',
       });
     };
@@ -70,8 +70,19 @@ class ResourceCard extends Component {
     };
 
     updateLikesDislikes = e => {
-
-    }
+      const newState = {... this.state}; //copy of what's in state
+      const resourceId = this.props.resourceId;
+      //make changes in state; add to resources array
+      if (this.state.action === "liked") {
+        //grab resource id and increase the likes
+        newState.like = this.props.resourceId.like
+        this.setState(newState, () => this.like());
+      }
+      else if (this.state.action === "disliked") {
+        newState.dislike = this.props.dislike(resourceId)
+      }
+      this.setState(newState, () => this.dislike());
+    } 
 
     addToFavorites = e => {
       console.log(this.props.user);
@@ -111,6 +122,7 @@ class ResourceCard extends Component {
                       <Icon
                         type="like"
                         theme={action === 'liked' ? 'filled' : 'outlined'}
+                        data-type="like"
                         onClick={this.like}
                       />
                     </Tooltip>
@@ -121,6 +133,7 @@ class ResourceCard extends Component {
                       <Icon
                         type="dislike"
                         theme={action === 'disliked' ? 'filled' : 'outlined'}
+                        data-type="dislike"
                         onClick={this.dislike}
                       />
                     </Tooltip>
