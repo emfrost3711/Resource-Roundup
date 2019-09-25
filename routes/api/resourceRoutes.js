@@ -35,6 +35,17 @@ router.get("/:id", function(req, res) {
     });
   })
 
+router.put("/:id/likesdislikes", function(req, res) {
+  let ID = req.params.id
+  console.log("i am the like/unlike route");
+  db.Resource.findOneAndUpdate({ _id: ID}, { $set: { likes: dbResource.likes } }, { new: true })
+  .then(function(dbResource) {
+    res.json(dbResource);
+  })
+  .catch(function(err) {
+    res.json(err);
+  });
+})
 // router.get("/", function(req, res) {
 //     // Find all users
 //     db.Resource.find({})

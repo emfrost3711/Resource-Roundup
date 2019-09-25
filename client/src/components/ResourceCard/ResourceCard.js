@@ -8,8 +8,8 @@ const { Meta } = Card;
 class ResourceCard extends Component {
     state = {
         loading: true,
-        likes: 4,
-        dislikes: 2,
+        likes: this.props.likes,
+        dislikes: this.props.dislikes,
         action: null,
         visible: false,
   
@@ -43,6 +43,8 @@ class ResourceCard extends Component {
         dislikes: this.state.dislikes,
         action: 'liked',
       });
+      // let updatedLikes = this.props.likes + 1,
+      // this.props.likes = updatedLikes; 
     };
   
     dislike = () => {
@@ -52,6 +54,7 @@ class ResourceCard extends Component {
         action: 'disliked',
       });
     };
+
    callback = (key) => {
       console.log(key);
     }
@@ -70,19 +73,23 @@ class ResourceCard extends Component {
     };
 
     updateLikesDislikes = e => {
-      const newState = {... this.state}; //copy of what's in state
       const resourceId = this.props.resourceId;
+      console.log(this.props.resourceId);
       //make changes in state; add to resources array
-      if (this.state.action === "liked") {
+      if (this.state.action === "liked") 
+      {const object = 
         //grab resource id and increase the likes
-        newState.like = this.props.resourceId.like
-        this.setState(newState, () => this.like());
+        API.likedislike(this.resourceId)
+        // .then(resourceId => {
+        //   this.like(resourceId);
+        // })
       }
       else if (this.state.action === "disliked") {
-        newState.dislike = this.props.dislike(resourceId)
-      }
-      this.setState(newState, () => this.dislike());
-    } 
+        API.likedislike().then(resourceId => {
+        this.dislike(resourceId);
+    })
+  }
+};
 
     addToFavorites = e => {
       console.log(this.props.user);
@@ -166,7 +173,7 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
                     <Icon
                       type="like"
                       theme={action === 'liked' ? 'filled' : 'outlined'}
-                      onClick={this.like}
+                      onClick={this.updateLikesDislikes()}
                     />
                   </Tooltip>
                   {" "}
@@ -176,7 +183,7 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
                     <Icon
                       type="dislike"
                       theme={action === 'disliked' ? 'filled' : 'outlined'}
-                      onClick={this.dislike}
+                      onClick={this.updateLikesDislikes()}
                     />
                   </Tooltip>
                   {" "}

@@ -56,7 +56,11 @@ export default {
 
   showFavorites: function(userId) {
     return axios.get("/api/favorites/" + userId)
-  }
+  },
+
+  likedislike: function(resourceId, body) {
+    return axios.put("/api/resources/" + resourceId + "/likesdislikes", body)
+  },
 };
 
 // copied from react 20.10 utils folder
