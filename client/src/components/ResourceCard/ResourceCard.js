@@ -12,7 +12,7 @@ class ResourceCard extends Component {
         dislikes: this.props.dislikes,
         action: null,
         visible: false,
-  
+        favorited: false,
       };
     
     componentDidMount() {
@@ -74,33 +74,27 @@ class ResourceCard extends Component {
 
     updateLikesDislikes = e => {
       const resourceId = this.props.resourceId;
-      console.log(this.props.resourceId);
-      //make changes in state; add to resources array
-      if (this.state.action === "liked") 
-      {const object = 
-        //grab resource id and increase the likes
-        API.likedislike(this.resourceId)
-        // .then(resourceId => {
-        //   this.like(resourceId);
-        // })
+      // console.log(resourceId);
+      if (this.state.action === "liked") {
+        API.likedislike(resourceId, {likes: 1 });
+     
       }
       else if (this.state.action === "disliked") {
-        API.likedislike().then(resourceId => {
-        this.dislike(resourceId);
-    })
-  }
-};
+        API.likedislike(resourceId, {dislikes: 1 });
+    }
+  };
 
     addToFavorites = e => {
       console.log(this.props.user);
       console.log(this.props.resourceId);
       let favoriteData = {user_id: this.props.user._id, resource: this.props.resourceId}
       API.addFavorite(favoriteData)
+      this.setState({favorited: true})
     }
 
     
       render() {
-        const { loading, likes, dislikes, action } = this.state;
+        const { loading, likes, dislikes, action, favorited } = this.state;
         
     
         return (
@@ -148,7 +142,7 @@ class ResourceCard extends Component {
                     <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
                 </span>,
               <Icon type="message" key="message" onClick={this.showModal}/>,
-              <Icon type="heart" key="heart" onClick={this.addToFavorites} />,
+              <Icon type="heart" key="heart" theme={favorited ? 'filled' : 'outlined'} onClick={this.addToFavorites} />,
             ]}
         >
           <Skeleton loading={loading} avatar active>
