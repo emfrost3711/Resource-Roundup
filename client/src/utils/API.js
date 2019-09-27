@@ -69,7 +69,10 @@ export default {
 
   showComments: function(resourceId) {
     return axios.get("/api/comments/" + resourceId)
-  }
+  },
+  likedislike: function(resourceId, body) {
+    return axios.put("/api/resources/" + resourceId + "/likesdislikes", body)
+  },
 };
 
 // copied from react 20.10 utils folder

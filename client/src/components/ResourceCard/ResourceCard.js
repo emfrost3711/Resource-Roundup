@@ -9,11 +9,11 @@ const { Meta } = Card;
 class ResourceCard extends Component {
     state = {
         loading: true,
-        likes: 4,
-        dislikes: 2,
+        likes: this.props.likes,
+        dislikes: this.props.dislikes,
         action: null,
         visible: false,
-  
+        favorited: false,
       };
     
     componentDidMount() {
@@ -45,15 +45,18 @@ class ResourceCard extends Component {
         dislikes: this.state.dislikes,
         action: 'liked',
       });
+      // let updatedLikes = this.props.likes + 1,
+      // this.props.likes = updatedLikes; 
     };
   
     dislike = () => {
       this.setState({
         likes: this.state.likes,
-        dislikes: this.state.dislikes - 1,
+        dislikes: this.state.dislikes + 1,
         action: 'disliked',
       });
     };
+
    callback = (key) => {
       console.log(key);
     }
@@ -72,20 +75,28 @@ class ResourceCard extends Component {
     };
 
     updateLikesDislikes = e => {
-
+      const resourceId = this.props.resourceId;
+      // console.log(resourceId);
+      if (this.state.action === "liked") {
+        API.likedislike(resourceId, {likes: 1 });
+     
+      }
+      else if (this.state.action === "disliked") {
+        API.likedislike(resourceId, {dislikes: 1 });
     }
+  };
 
     addToFavorites = e => {
       console.log(this.props.user);
       console.log(this.props.resourceId);
       let favoriteData = {user_id: this.props.user._id, resource: this.props.resourceId}
       API.addFavorite(favoriteData)
+      this.setState({favorited: true})
     }
 
     
       render() {
-        const { loading, likes, dislikes, action } = this.state;
-        console.log("this.props.resourceId", this.props.resourceId);
+        const { loading, likes, dislikes, action, favorited } = this.state;
         
     
         return (
@@ -115,6 +126,7 @@ class ResourceCard extends Component {
                       <Icon
                         type="like"
                         theme={action === 'liked' ? 'filled' : 'outlined'}
+                        data-type="like"
                         onClick={this.like}
                       />
                     </Tooltip>
@@ -125,14 +137,15 @@ class ResourceCard extends Component {
                       <Icon
                         type="dislike"
                         theme={action === 'disliked' ? 'filled' : 'outlined'}
+                        data-type="dislike"
                         onClick={this.dislike}
                       />
                     </Tooltip>
                     {" "}
                     <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
                 </span>,
-              <Tooltip title="Like"><Icon type="message" key="message" onClick={this.showModal}/></Tooltip>,
-              <Icon type="heart" key="heart" onClick={this.addToFavorites} />,
+              <Icon type="message" key="message" onClick={this.showModal}/>,
+              <Icon type="heart" key="heart" theme={favorited ? 'filled' : 'outlined'} onClick={this.addToFavorites} />,
             ]}
         >
           <Skeleton loading={loading} avatar active>
@@ -157,7 +170,7 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
                     <Icon
                       type="like"
                       theme={action === 'liked' ? 'filled' : 'outlined'}
-                      onClick={this.like}
+                      onClick={this.updateLikesDislikes()}
                     />
                   </Tooltip>
                   {" "}
@@ -167,7 +180,7 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
                     <Icon
                       type="dislike"
                       theme={action === 'disliked' ? 'filled' : 'outlined'}
-                      onClick={this.dislike}
+                      onClick={this.updateLikesDislikes()}
                     />
                   </Tooltip>
                   {" "}
