@@ -56,6 +56,15 @@ export default {
 
   showFavorites: function(userId) {
     return axios.get("/api/favorites/" + userId)
+  },
+
+  addComment: function(commentData) {
+    console.log("commentData", commentData)
+    return axios.post("/api/comments", commentData)
+  },
+
+  showComments: function(resourceId) {
+    return axios.get("/api/comments/" + resourceId)
   }
 };
 

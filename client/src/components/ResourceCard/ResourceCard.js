@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import API from "../../utils/API";
 import { Skeleton, Card, Icon, Avatar, Tooltip, Modal, Button } from 'antd';
 import CommentForm from "../CommentForm";
+import CommentsCard from "../CommentsCard";
 
 
 const { Meta } = Card;
@@ -26,6 +27,7 @@ class ResourceCard extends Component {
     }
     
     showModal = () => {
+      console.log("showmodal working")
       this.setState({
         visible: true,
       });
@@ -83,6 +85,7 @@ class ResourceCard extends Component {
     
       render() {
         const { loading, likes, dislikes, action } = this.state;
+        console.log("this.props.resourceId", this.props.resourceId);
         
     
         return (
@@ -96,7 +99,8 @@ class ResourceCard extends Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
         >
-          <CommentForm/>
+          {/* <CommentsCard comments= {"this is a comment"}/> */}
+          <CommentForm resource={this.props.resourceId}/>
         </Modal>
       </div>
        
@@ -127,7 +131,7 @@ class ResourceCard extends Component {
                     {" "}
                     <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
                 </span>,
-              <Icon type="message" key="message" onClick={this.showModal}/>,
+              <Tooltip title="Like"><Icon type="message" key="message" onClick={this.showModal}/></Tooltip>,
               <Icon type="heart" key="heart" onClick={this.addToFavorites} />,
             ]}
         >
