@@ -14,9 +14,9 @@ const db = require("../../models");
 // // /api/todos/all
 // // get all todos from the signed in user
 router.get("/", function (req, res) {
-    console.log('I am the resources route', req, res);
+    // console.log('I am the resources route', req, res);
     db.Resource.find()
-        .populate("category tags comment")
+        .populate("category tags comments")
         .then(resources => res.json(resources))
         .catch(err => res.json(err));
 });
@@ -25,7 +25,7 @@ router.get("/:id", function(req, res) {
     let ID = req.params.id
     console.log(ID)
     db.Resource.findOne({ _id: ID})
-    // .populate("comment user")
+    .populate("comments")
     .then(function(dbResource) {
       res.json(dbResource);
     })
