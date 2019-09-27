@@ -34,6 +34,10 @@ export default {
     return axios.get("/api/resources");
   },
 
+  getResource: function(resourceId) {
+    return axios.get(`/api/resources/${resourceId}`)
+  },
+
   getTodos: function() {
     return axios.get("/api/todos/all")
   },
