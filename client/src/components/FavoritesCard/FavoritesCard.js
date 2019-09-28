@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import API from "../../utils/API";
 import { Skeleton, Card, Icon, Avatar, Tooltip, Modal, Button } from 'antd';
+import { Label } from "semantic-ui-react";
 import CommentForm from "../CommentForm";
 
 const { Meta } = Card;
@@ -71,6 +72,14 @@ class FavoritesCard extends Component {
       API.addFavorite(favoriteData)
     }
 
+    renderTechTags = (tech_tags) => {
+      return tech_tags.slice(0, 6).map(tech_tag => (
+        <Label className='tileTags'>
+          {tech_tag}
+        </Label>
+      ));
+    }
+
     
       render() {
         const { loading, likes, dislikes, action } = this.state;
@@ -122,13 +131,12 @@ class FavoritesCard extends Component {
               <Icon type="heart" key="heart" onClick={this.addToFavorites} />,
             ]}
         >
-          <Skeleton loading={loading} avatar active>
+          <Skeleton loading={loading}  active>
             <Meta
-              avatar={
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-              }
+             
               title={this.props.title}
-              description="This is the description"
+              description={this.props.description}
+          
             />
           </Skeleton>
         </Card>)
@@ -166,9 +174,9 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
           
         >
           <Meta
-            avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-            title={this.props.title}
-            description="This is the description"
+        title={this.props.title}
+        description={this.props.description}
+
           />
           
         </Card>)
@@ -209,9 +217,8 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
           
         >
           <Meta
-            avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
             title={this.props.title}
-            description="This is the description"
+            description={this.props.description}
           />
           
         </Card>)

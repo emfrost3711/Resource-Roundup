@@ -37,9 +37,9 @@ class StudentResources extends Component {
 
     }
 
-    handleCategoryClick = (category) => {
+    handleCategoryClick = (technology) => {
         let resources = [...this.state.resources]
-        let selectedResources = resources.filter(resource => resource.categories.includes(category))
+        let selectedResources = resources.filter(resource => resource.language === technology)
         this.setState({
             selectedResources
         })
@@ -49,7 +49,8 @@ class StudentResources extends Component {
         API.getResources()
             .then(dbResource => {
                 this.setState({ resources: dbResource.data });
-                console.log(this.state.resources);
+ console.log("resources loaded!");
+ console.log(this.state.resources);
             })
     }
 

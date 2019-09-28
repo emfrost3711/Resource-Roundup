@@ -1,0 +1,110 @@
+
+.aboveTheFold {
+    min-height: 850px;
+    /* padding: 1em 0em; */
+    background: #4d5991;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left, #4d5991, #1A265E) !important;
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #4d5991, #1A265E) !important;
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #4d5991, #1A265E) !important;
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #4d5991, #1A265E) !important;
+    /* background-image: url('../../../assets/images/home.png'); */
+    /* background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center; */
+  }
+  .landingImg {
+      margin-top: 0px !important;
+      margin-bottom: 0px !important;
+      width: "100%";
+      height: "auto";
+      background-size: 'cover';
+      background-repeat: 'no-repeat';
+      background-image: url(../../images/356.jpg);
+      -webkit-background-size:cover;
+  }
+  .landingGrid {
+   margin-top: -30px;
+  }
+  .landingHeader {
+    font-size: 7em !important;
+    font-weight: 400 !important;
+    /* margin-bottom: 0 !important; */
+    margin-top: 0.30em !important;
+    
+  }
+  .landingSubheader {
+    font-size: 1.5em !important;
+    font-weight: 400 !important;
+  
+    margin-bottom: -20px !important;
+  }
+  .landingRotating {
+    font-size: 2em !important;
+    font-weight: 400 !important;
+    color: #fff !important;
+    opacity: 0.5 !important;
+  }
+  .signUpButton {
+    width: 450px !important;
+    margin-bottom: 0.75em !important;
+    display: block;
+    background-color: #5fa8f9 !important;
+    -webkit-transition-duration: 0.4s !important;
+    transition-duration: 0.4s !important;
+  }
+  .signUpButton:hover {
+    background-color: #2C75C6 !important;
+    color: white !important;
+  }
+  .signUpForm {
+    width: 450px !important;
+    margin: 0 auto !important;
+    display: none;
+  }
+  .cohortCodeButton {
+    width: 450px !important;
+  }
+  .landingWho {
+    font-size: 7em !important;
+    font-weight: 400 !important;
+    margin-bottom: 0 !important;
+    margin-top: 0.5em !important;
+    color: #25569B !important;
+  }
+  .iconSection {
+    margin-top: 100px !important;
+  }
+  .landingIcon {
+    font-size: 4em !important;
+    color: #25569B !important;  
+    margin-bottom: 10px !important;
+  }
+  .itemHeader {
+    font-size: 2.5em !important;
+    font-weight: 400 !important;
+  }
+  .itemMeta {
+    font-size: 1.5em !important;
+    font-weight: 300 !important;
+    width: 300px !important;
+    line-height: 1.5em !important;
+  }
+  .quote {
+    margin-top: 150px !important;
+    font-size: 2.5em !important;
+    font-weight: 400 !important;
+  }
+  .landingContainer {
+    margin-top: 50px !important;
+    margin-bottom: 100px !important;
+  }
+  .noAccess {
+    display: none;
+    font-size: 18px;
+    color: red;
+    padding-top: 15px;
+  }

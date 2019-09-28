@@ -54,8 +54,6 @@ class StudentDash extends Component {
                             userId={this.state.user._id} />
                         <br />
                         <br />
-                        <TabsCard />
-                        <br />
                         <br />
                         <Request />
                     </div>

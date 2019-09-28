@@ -4,13 +4,7 @@ import ResourceCard from "../ResourceCard/ResourceCard";
 export class ResourceCollection extends Component {
 
     state = {
-        title: "",
-        link: "",
-        image: "",
-        likes: 0,
-        dislikes: 0,
-
-
+    
     };
 
 
@@ -30,13 +24,22 @@ export class ResourceCollection extends Component {
                                 resourceId={resource._id}
                                 key={index}
                                 title={resource.title}
-                                link={resource.link}
+                                fileType={resource.fileType}
                                 image={resource.image}
                                 likes={resource.likes}
                                 dislikes={resource.dislikes}
-                                fileType={resource.fileType}
-                                user={this.props.user}
+                                description={resource.description}
+                                language={resource.language}
+                                tech_tags={resource.tech_tags}
+                                source_s3={resource.source_s3}
+                                other_url={resource.other_url}
+                                video_url={resource.video_url}
+                                status={resource.status}
                                 comments={resource.comments}
+                                user={this.props.user}
+                                renderTechTags={this.renderTechTags}
+                                comments={resource.comments}
+
                             />
                         )}
                     </>

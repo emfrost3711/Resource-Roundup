@@ -4,6 +4,7 @@ import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import TabsCard from "../../components/ScheduleCard";
+import CreateResourceForm from "../CreateResource";
 
 class AdminDash extends Component {
     state = {
@@ -44,7 +45,7 @@ class AdminDash extends Component {
                 {this.state.loggedIn ? (
                     <div className="profileBox">
                         <h1 id="userTitle">Welcome {this.state.user.username}</h1>
-                        <TabsCard />
+                        <CreateResourceForm />
                     </div>
                 ) : (
                     <div className="noUser">
