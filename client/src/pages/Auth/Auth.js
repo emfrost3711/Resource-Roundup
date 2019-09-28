@@ -3,6 +3,23 @@ import Login from "../../components/Login";
 import Signup from "../../components/Signup";
 import API from "../../utils/API";
 import "./Auth.scss";
+import authImg from "../../assets/images/2.jpg";
+
+const backImage = {
+  width: "100%",
+  height: "100vh",
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  backgroundImage: `url(${authImg})`,
+
+  
+ };
+
+ const authBox = {
+   width: "30%",
+   margin: "0 auto",
+   marginLeft: "35%"
+ }
 
 class Auth extends Component {
 
@@ -136,7 +153,8 @@ class Auth extends Component {
 
   render() {
     return (
-      <div className="authBox">
+      <div className="authBox" style={backImage}>
+        <div style={authBox}>
         {(this.props.action === "login") ? (
           <Login
             username={this.state.username}
@@ -163,6 +181,7 @@ class Auth extends Component {
               adminPassword={this.state.adminPassword}
             />
           )}
+          </div>
       </div>
     )
   }
