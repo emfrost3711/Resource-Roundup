@@ -152,7 +152,7 @@ class ResourceCard extends Component {
             <Meta
               title={this.props.title}
               description={this.props.description}
-              tech_tags={this.props.tech_tags}
+              // tech_tags={this.props.tech_tags}
             />
           </Skeleton>
         </Card></a>)
@@ -168,7 +168,7 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe></a>
                     <Icon
                       type="like"
                       theme={action === 'liked' ? 'filled' : 'outlined'}
-                      onClick={this.updateLikesDislikes()}
+                      onClick={this.like}
                     />
                   </Tooltip>
                   {" "}
@@ -178,7 +178,7 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe></a>
                     <Icon
                       type="dislike"
                       theme={action === 'disliked' ? 'filled' : 'outlined'}
-                      onClick={this.updateLikesDislikes()}
+                      onClick={this.dislike}
                     />
                   </Tooltip>
                   {" "}
@@ -192,20 +192,21 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe></a>
           <Meta
            title={this.props.title}
            description={this.props.description}
-           tech_tags={this.props.tech_tags}
+          //  tech_tags={this.props.tech_tags}
           />
           
         </Card>
         )
         :  
-        (<Card
+        (        <a href={this.props.other_url || this.props.source_s3 || this.props.video_url} target="_blank"><Card
           style={{ width: 300 }} 
           cover={
-            <a href={this.props.other_url || this.props.source_s3 || this.props.video_url} target="_blank"><img
+    
+              <img
               alt="example"
               src={this.props.image}
               
-            /></a>
+            />
           }
           actions={[
             <span key="comment-basic-like">
@@ -238,10 +239,10 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe></a>
             
             title={this.props.title}
             description={this.props.description}
-            tech_tags={this.props.tech_tags}
+            // tech_tags={this.props.tech_tags}
           />
           
-        </Card>)
+        </Card></a>)
       }
       
     
