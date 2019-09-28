@@ -34,6 +34,10 @@ export default {
     return axios.get("/api/resources");
   },
 
+  getResource: function(resourceId) {
+    return axios.get(`/api/resources/${resourceId}`)
+  },
+
   getTodos: function() {
     return axios.get("/api/todos/all")
   },
@@ -58,6 +62,14 @@ export default {
     return axios.get("/api/favorites/" + userId)
   },
 
+  addComment: function(commentData) {
+    console.log("commentData", commentData)
+    return axios.post("/api/comments", commentData)
+  },
+
+  showComments: function(resourceId) {
+    return axios.get("/api/comments/" + resourceId)
+  },
   likedislike: function(resourceId, body) {
     return axios.put("/api/resources/" + resourceId + "/likesdislikes", body)
   },

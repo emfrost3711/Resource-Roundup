@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "./StudentDash.css";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import API from "../../utils/API";
 import TabsCard from "../../components/ScheduleCard";
 import Favorites from "../../components/Favorites";
 import Request from "../../components/RequestResource";
+import Comments from "../../components/CommentCollection";
+import CommentForm from "../../components/CommentForm"
 
 class StudentDash extends Component {
     state = {
@@ -32,25 +34,12 @@ class StudentDash extends Component {
         console.log(this.props)
     }
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        if (this.state.comment) {
-            API.saveComment({
-                resource: this.state.resource,
-                user: this.state.userId,
-                comment: this.state.comment
-            })
-                .then(res => this.loadComments())
-                .catch(err => console.log(err));
-        }
-    };
-    
     loading() {
-        setTimeout(()=> {
+        setTimeout(() => {
             this.setState({
                 loading: false
             })
-        }, 1000)  
+        }, 1000)
     }
 
     render() {
@@ -61,25 +50,25 @@ class StudentDash extends Component {
                         <br />
                         <h1 id="userTitle">Howdy, {this.state.user.username} !</h1>
                         <br />
-                        <Favorites 
-                        userId={this.state.user._id}/>
+                        <Favorites
+                            userId={this.state.user._id} />
                         <br />
                         <br />
                         <br />
-                        <Request/>
+                        <Request />
                     </div>
                 ) : (
-                    <div className="noUser">
-                        {!this.state.loading ? (
-                            <>
-                                <h1>please log in</h1>
-                                <Link className="loginLink" to="/login"><Button className="loginBtn" color="info" block>Login</Button></Link>
-                            </>
-                        ) : (
-                            <img id="loadingIcon" src="./assets/images/loading.gif" alt="loading"/>
-                        )}
-                    </div> 
-                )}
+                        <div className="noUser">
+                            {!this.state.loading ? (
+                                <>
+                                    <h1>please log in</h1>
+                                    <Link className="loginLink" to="/login"><Button className="loginBtn" color="info" block>Login</Button></Link>
+                                </>
+                            ) : (
+                                    <img id="loadingIcon" src="./assets/images/loading.gif" alt="loading" />
+                                )}
+                        </div>
+                    )}
             </div>
         )
     }

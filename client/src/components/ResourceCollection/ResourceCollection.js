@@ -38,6 +38,8 @@ export class ResourceCollection extends Component {
                                 comments={resource.comments}
                                 user={this.props.user}
                                 renderTechTags={this.renderTechTags}
+                                comments={resource.comments}
+
                             />
                         )}
                     </>

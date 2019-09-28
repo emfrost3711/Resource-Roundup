@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ResourceCard from "../ResourceCard/ResourceCard";
+import CommentsCard from "../CommentsCard/CommentsCard";
 
 export class CommentCollection extends Component {
 
@@ -21,17 +21,10 @@ export class CommentCollection extends Component {
             <>
                 {this.props.comments.length ? (
                     <>
-                        {this.props.resources.map((resource, index) =>
-                            <ResourceCard
-                                resourceId={resource._id}
-                                key={index}
-                                title={resource.title}
-                                link={resource.link}
-                                image={resource.image}
-                                likes={resource.likes}
-                                dislikes={resource.dislikes}
-                                fileType={resource.fileType}
-                                user={this.props.user}
+                        {this.props.commments.map((comment, index) =>
+                            <CommentsCard
+                                comment={comment._id}
+
                             />
                         )}
                     </>

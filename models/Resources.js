@@ -46,11 +46,31 @@ const resourceSchema = new Schema({
     status: {
       type: [String]
     },
+
+  //   comments:[{
+  //     body:String,
+  //     date:{
+  //         type:Date,
+  //         default: Date.now
+  //     },
+  //     author_id:{
+  //         type:Schema.ObjectId,
+  //         ref:'User'
+  //     },
+  //     //public vs. private chats
+  //     chat_type: String
+  // }],
+  // commenting out having comments as part of a separate model to test the idea of just including them directly here  
     comments: [{
       type: Schema.Types.ObjectId,
       ref:"Comment"
     }]
- 
+      ref:"Comments"
+    }],
+    approved: {
+      type: Boolean,
+      default: false
+    },
   });
 
 

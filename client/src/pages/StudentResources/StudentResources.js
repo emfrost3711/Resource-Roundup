@@ -49,7 +49,8 @@ class StudentResources extends Component {
         API.getResources()
             .then(dbResource => {
                 this.setState({ resources: dbResource.data });
-                console.log("resources loaded!");
+ console.log("resources loaded!");
+ console.log(this.state.resources);
             })
     }
 
