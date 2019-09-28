@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import ResourceCard from "../ResourceCard/ResourceCard";
+import techSelection from '../../utils/techTags.json';
+import { Label } from 'semantic-ui-react';
+
 
 export class ResourceCollection extends Component {
 
@@ -18,6 +21,14 @@ export class ResourceCollection extends Component {
         console.log(this.props);
     };
 
+    renderTechTags = (tech_tags) => {
+        return tech_tags.slice(0, 6).map(tech_tag => (
+          <Label className='tileTags'>
+            {tech_tag}
+          </Label>
+        ));
+      }
+
     render() {
 
 
@@ -30,12 +41,21 @@ export class ResourceCollection extends Component {
                                 resourceId={resource._id}
                                 key={index}
                                 title={resource.title}
-                                link={resource.link}
+                                fileType={resource.fileType}
                                 image={resource.image}
                                 likes={resource.likes}
                                 dislikes={resource.dislikes}
-                                fileType={resource.fileType}
+                                description={resource.description}
+                                language={resource.language}
+                                tech_tags={resource.tech_tags}
+                                source_s3={resource.source_s3}
+                                other_url={resource.other_url}
+                                video_url={resource.video_url}
+                                status={resource.status}
+                                comments={resource.comments}
                                 user={this.props.user}
+
+                                renderTechTags={this.renderTechTags}
                             />
                         )}
                     </>

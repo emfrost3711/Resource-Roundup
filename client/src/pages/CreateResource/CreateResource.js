@@ -24,13 +24,13 @@ const languageOptions = [
     text: 'Express', value: 'express'
   },
   {
-    text: 'HTML', value: 'html'
+    text: 'Github', value: 'github'
   },
   {
     text: 'CSS', value: 'css'
   },
   {
-    text: 'AJAX/API', value: 'ajax' || 'api',
+    text: 'AJAX/API', value: 'ajax/api',
   },
   {
     text: 'Other', value: 'other'
@@ -39,7 +39,7 @@ const languageOptions = [
     text: 'Review Session', value: 'reviewSession'
   },
   {
-    text: 'Java', value: 'java'
+    text: 'Heroku', value: 'heroku'
   },
   {
     text: 'React', value: 'react'
@@ -90,7 +90,7 @@ const statusOptions = [
 
 class CreateResourceForm extends Component {
   state = {
-    mode: "create",
+    // mode: "create",
     loggedIn: false,
     user: null,
     resource:  {
@@ -106,7 +106,7 @@ class CreateResourceForm extends Component {
       other_url: '',
       video_url: '',
       status: [],
-      comments: []
+      // comments: []
     },
     redirect: false,
     redirect_location: ''
@@ -126,23 +126,19 @@ class CreateResourceForm extends Component {
                 });
             }
         }).then(() => {
-          if (this.determineMode(...this.getParams())) 
-          {this.fetchProjectData(...this.getParams())
-        .then(() => {
-          if (this.state.owner_id !== this.state.user._id) {
-            const [ resource ] = this.getParams();
-            this.setState({redirect_location: `/edit/${this.state.resource._id}` })
-            this.setState({redirect: true })
-        }})
+          // if (this.determineMode(...this.getParams())){
+          this.fetchResourceData()
+          // this.fetchProjectData(...this.getParams())
+        // .then(() => {
+        //   if (this.state.owner_id !== this.state.user._id) {
+        //     const [ resource ] = this.getParams();
+        //     this.setState({redirect_location: `/edit/${this.state.resource._id}` })
+        //     this.setState({redirect: true })
+        // }})
         
-      }
-    })
-  }
-
+        })}
     
-    
-    
-
+  
 
   handleMainTechnologyChange = (e, {value}) => {
     this.setState({
@@ -198,20 +194,20 @@ class CreateResourceForm extends Component {
       }
     });
   }
-  getParams = () => [this.props.match.params.username, this.props.match.params.resource];
+  // getParams = () => [this.props.match.params.username, this.props.match.params.resource];
 
-  determineMode = (username, resource) => {
-    if (username && resource) {
-      // console.log('edit mode!')
-      this.setState({mode: 'edit'})
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // determineMode = (username, resource) => {
+  //   if (username && resource) {
+  //     // console.log('edit mode!')
+  //     this.setState({mode: 'edit'})
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   fetchResourceData = (resource) => {
-    return axios.get(`/api/resources/${resource._id}`).then(res => {
+     axios.get(`/api/resources/${this.props.resource}`).then(res => {
       // console.log('Resource data:',res.data);
       const r = res.data[0];
       this.setState({ 
@@ -242,17 +238,19 @@ class CreateResourceForm extends Component {
 
   handleSubmitButton = event => {
     event.preventDefault();
-    return axios.post("/api/resources/New", this.state.resource)
-        .then(res => {
+    let dbResource = this.state.resource
+    return axios.post("/api/resources/", dbResource)
+        .then(dbResource => {
+          console.log(dbResource);
           // console.log(res.data);
           this.setState({redirect_location: `/resources`})
           this.setState({redirect: true })
     })}
         
 
-  render(props) {
+  render() {
 
-    const { value } = this.state
+    
     
     if (this.state.redirect) {return (<Redirect to={this.state.redirect_location} />)
    } else { 
@@ -262,9 +260,9 @@ class CreateResourceForm extends Component {
       <Segment basic textAlign='center' vertical className='createBanner'>
         <Container>
           <Header className='createHeader'>
-          {this.state.mode === 'create' ? 
-                'Create a Resource' :
-                `Edit ${this.state.resource.title}`}
+          {/* {this.state.mode === 'create' ?  */}
+                Create a Resource
+                {/* // :`Edit ${this.state.resource.title}`} */}
           </Header>
         </Container>
       </Segment>
@@ -294,9 +292,9 @@ class CreateResourceForm extends Component {
           <Form.Input name='video_url' type="url" label='Video URL' 
             onChange={this.handleInputChange} value={this.state.resource.video_url}/>
           <Button className='createButton'>
-          {this.state.mode === 'create' ? 
-              'Create Resource' :
-              'Save Changes'}
+          {/* {this.state.mode === 'create' ?  */}
+              Yeehaw!
+              {/* // :'Save Changes'} */}
           </Button>
         </Form>
         <p className='warning'></p>

@@ -15,19 +15,19 @@ const resourceSchema = new Schema({
       type: String,
       required: "title is required"
     },
-    link: {
-      type: String,
+    description: {
+      type: String
     },
     image: {
       type: String,
     },
-    contributor: {
-      type: String
-    },
-    author: {
-      type: String
-    },
     source_s3: {
+      type: String
+    },
+    video_url: {
+      type: String
+    },
+    other_url: {
       type: String
     },
     likes: {
@@ -36,25 +36,21 @@ const resourceSchema = new Schema({
     dislikes: {
       type: Number
     },
-    categories: {
+    language: {
+      type: String,
+      required: "main language is required"
+    },
+    tech_tags: {
       type: [String]
     },
-    tags: {
+    status: {
       type: [String]
     },
     comments: [{
       type: Schema.Types.ObjectId,
       ref:"Comment"
     }]
-    // approved: {
-    //   type: Boolean,
-    //   default: false
-    // },
-    // createdAt: {
-    //   type: Date,
-    //   default: Date.now()
-    // }
-
+ 
   });
 
 

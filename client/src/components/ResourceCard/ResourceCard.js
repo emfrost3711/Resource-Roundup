@@ -4,6 +4,7 @@ import { Skeleton, Card, Icon, Avatar, Tooltip, Modal, Button } from 'antd';
 import CommentForm from "../CommentForm";
 
 
+
 const { Meta } = Card;
 class ResourceCard extends Component {
     state = {
@@ -98,12 +99,14 @@ class ResourceCard extends Component {
         
     
         return (
+
+          
           <>
           
           <div>
         
         <Modal
-          title="Basic Modal"
+          title={this.props.title}
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
@@ -114,7 +117,7 @@ class ResourceCard extends Component {
        
        {this.props.fileType === "pdf" ? (
        
-       <Card
+       <a href={this.props.other_url || this.props.source_s3 || this.props.video_url} target="_blank"><Card
           style={{ width: 300, marginTop: 16 }}
           actions={[
           
@@ -147,19 +150,17 @@ class ResourceCard extends Component {
         >
           <Skeleton loading={loading} avatar active>
             <Meta
-              avatar={
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-              }
               title={this.props.title}
-              description="This is the description"
+              description={this.props.description}
+              tech_tags={this.props.tech_tags}
             />
           </Skeleton>
-        </Card>)
+        </Card></a>)
         : this.props.fileType === "video" ? (<Card
           style={{ width: 300 }} 
           cover={
-            <iframe src={this.props.image}
-style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
+            <a href={this.props.other_url || this.props.source_s3 || this.props.video_url} target="_blank"><iframe src={this.props.image || this.props.video_url}
+style={{width: 300 , height: "auto" , frameborder: 0}}></iframe></a>
           }
           actions={[
             <span key="comment-basic-like">
@@ -184,14 +185,14 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
                   <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
               </span>,
             <Icon type="message" key="message" onClick={this.showModal}/>,
-            <Icon type="heart" key="heart" onClick={this.addToFavorites} />,
+            <Icon type="heart" key="heart" theme={favorited ? 'filled' : 'outlined'} onClick={this.addToFavorites} />,
           ]}
           
         >
           <Meta
-            avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-            title={this.props.title}
-            description="This is the description"
+           title={this.props.title}
+           description={this.props.description}
+           tech_tags={this.props.tech_tags}
           />
           
         </Card>
@@ -200,11 +201,11 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
         (<Card
           style={{ width: 300 }} 
           cover={
-            <img
+            <a href={this.props.other_url || this.props.source_s3 || this.props.video_url} target="_blank"><img
               alt="example"
               src={this.props.image}
               
-            />
+            /></a>
           }
           actions={[
             <span key="comment-basic-like">
@@ -229,14 +230,15 @@ style={{width: 300 , height: "auto" , frameborder: 0}}></iframe>
                   <span style={{ paddingLeft: 8, cursor: 'auto' }}>{dislikes}</span>
               </span>,
             <Icon type="message" key="message" onClick={this.showModal}/>,
-            <Icon type="heart" key="heart" onClick={this.addToFavorites} />,
+            <Icon type="heart" key="heart" theme={favorited ? 'filled' : 'outlined'} onClick={this.addToFavorites} />,
           ]}
           
         >
           <Meta
-            avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+            
             title={this.props.title}
-            description="This is the description"
+            description={this.props.description}
+            tech_tags={this.props.tech_tags}
           />
           
         </Card>)
