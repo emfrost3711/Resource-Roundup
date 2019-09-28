@@ -158,6 +158,8 @@ class StudentResources extends Component {
                       <Grid.Column>
                         {this.renderTiles(1)}
                       </Grid.Column>
+                      </Grid.Row>
+                      <Grid.Row>
                       <Grid.Column>
                         {this.renderTiles(2)}
                       </Grid.Column>
